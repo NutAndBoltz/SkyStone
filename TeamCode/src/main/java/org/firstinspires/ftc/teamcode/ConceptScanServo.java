@@ -63,6 +63,9 @@ public class ConceptScanServo extends LinearOpMode {
     boolean rampUp = true;
 
 
+
+
+
     @Override
     public void runOpMode() {
 

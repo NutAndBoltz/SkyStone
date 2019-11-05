@@ -85,6 +85,41 @@ public class LinearEncoder extends LinearOpMode {
 
 
 
+
+
+    public int DistanceToTick(double distance)
+    {
+        int tick = (int)(distance/INCH_PER_COUNT);
+        return tick;
+    }
+    public void MoveForwared(double distance)
+    {
+        int tick =DistanceToTick(distance);
+    }
+    public void MoveBackward(double distance)
+    {
+        int tick =DistanceToTick(distance);
+    }
+    public void TurnRight()
+    {
+
+    }
+    public void TurnLeft()
+    {
+
+    }
+    public void MoveRight(double distance)
+    {
+        TurnRight();
+        int tick =DistanceToTick(distance);
+    }
+    public void MoveLeft(double distance)
+    {
+        TurnLeft();
+        int tick =DistanceToTick(distance);
+    }
+
+
     @Override
     public void runOpMode() {
 
