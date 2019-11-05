@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
+//random comment
 
 @TeleOp
 public class CurrentV_GM extends LinearOpMode {
@@ -12,8 +13,6 @@ public class CurrentV_GM extends LinearOpMode {
     DcMotor motorFR;
     DcMotor motorBL;
     DcMotor motorBR;
-    DcMotor linearSlide;
-    DcMotor linearRetract;
 
     static final double     FORWARD_SPEED = 0.05;
     static final double     FORWARD_SPEED2 = 0.4;
@@ -24,8 +23,6 @@ public class CurrentV_GM extends LinearOpMode {
         motorFR = hardwareMap.get(DcMotor.class, "motor_fr");
         motorBL = hardwareMap.get(DcMotor.class, "motor_bl");
         motorBR = hardwareMap.get(DcMotor.class, "motor_br");
-        linearSlide = hardwareMap.dcMotor.get("linearSlide");
-        linearRetract = hardwareMap.dcMotor.get("linearRetract");
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
@@ -35,6 +32,7 @@ public class CurrentV_GM extends LinearOpMode {
 
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
+
             //Connecting to game controller elements
             double G1rightStickY = -gamepad1.right_stick_y;
             double G1leftStickY = -gamepad1.left_stick_y;
@@ -64,11 +62,6 @@ public class CurrentV_GM extends LinearOpMode {
                 this.motorBR.setPower(-G1rightStickY);
                 this.motorBL.setPower(-G1rightStickY);
             }
-//            runtime.reset();
-//            if (G1buttonB){
-//                linearSlide.setPower(-FORWARD_SPEED2);
-//                linearRetract.setPower(-FORWARD_SPEED2);
-//            }
 
             telemetry.addData("Status", "Running");
             telemetry.update();
