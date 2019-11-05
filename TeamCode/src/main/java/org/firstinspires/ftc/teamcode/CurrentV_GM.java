@@ -4,7 +4,6 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
-//random comment
 
 @TeleOp
 public class CurrentV_GM extends LinearOpMode {
@@ -16,6 +15,7 @@ public class CurrentV_GM extends LinearOpMode {
 
     static final double     FORWARD_SPEED = 0.05;
     static final double     FORWARD_SPEED2 = 0.4;
+
 
     @Override
     public void runOpMode() {
