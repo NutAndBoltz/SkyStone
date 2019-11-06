@@ -37,8 +37,11 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
-
 /**
  * This file illustrates the concept of driving a path based on encoder counts.
  * It uses the common Pushbot hardware class to define the drive on the robot.
@@ -67,71 +70,42 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
  */
 
 @Autonomous(name="Pushbot: Auto Drive By Encoder", group="Pushbot")
-@Disabled
-public class LinearEncoder extends LinearOpMode {
+
+public class Auton extends LinearOpMode implements RobotVariable {
 
     /* Declare OpMode members. */
     HardwarePushbot         robot   = new HardwarePushbot();   // Use a Pushbot's hardware
     private ElapsedTime     runtime = new ElapsedTime();
 
-    static final double     COUNTS_PER_MOTOR_REV    = 1440 ;    // eg: TETRIX Motor Encoder
-    static final double     DRIVE_GEAR_REDUCTION    = 2.0 ;     // This is < 1.0 if geared UP
-    static final double     WHEEL_DIAMETER_INCHES   = 4.0 ;     // For figuring circumference
-    static final double     CIRCUMFERENCE           = (WHEEL_DIAMETER_INCHES/2)*Math.PI;
-    static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION)/CIRCUMFERENCE;
-    static final double     INCH_PER_COUNT          = CIRCUMFERENCE/COUNTS_PER_MOTOR_REV;
-    static final double     DRIVE_SPEED             = 0.6;
-    static final double     TURN_SPEED              = 0.5;
+
+    DcMotor motorFL;
+    DcMotor motorFR;
+    DcMotor motorBL;
+    DcMotor motorBR;
 
 
 
 
 
-    public int DistanceToTick(double distance)
-    {
-        int tick = (int)(distance/INCH_PER_COUNT);
-        return tick;
-    }
-    public void MoveForwared(double distance)
-    {
-        int tick =DistanceToTick(distance);
-    }
-    public void MoveBackward(double distance)
-    {
-        int tick =DistanceToTick(distance);
-    }
-    public void TurnRight()
-    {
 
-    }
-    public void TurnLeft()
-    {
 
-    }
-    public void MoveRight(double distance)
-    {
-        TurnRight();
-        int tick =DistanceToTick(distance);
-    }
-    public void MoveLeft(double distance)
-    {
-        TurnLeft();
-        int tick =DistanceToTick(distance);
-    }
 
 
     @Override
     public void runOpMode() {
 
-        /*
-         * Initialize the drive system variables.
-         * The init() method of the hardware class does all the work here
-         */
+        motorFL = hardwareMap.get(DcMotor.class, "motor_fl");
+        motorFR = hardwareMap.get(DcMotor.class, "motor_fr");
+        motorBL = hardwareMap.get(DcMotor.class, "motor_bl");
+        motorBR = hardwareMap.get(DcMotor.class, "motor_br");
         robot.init(hardwareMap);
 
-        // Send telemetry message to signify robot waiting;
-        telemetry.addData("Status", "Resetting Encoders");    //
+
+        telemetry.addData("Status", "Initialized");
         telemetry.update();
+
+
+
 
         robot.leftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.rightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
