@@ -23,19 +23,20 @@ public class RobotMovement extends LinearOpMode implements RobotVariable
         return tick;
     }
 
+
+    //make sure opmode is active b4 calling these method
     public void MoveForwared(double distance, String mode)
     {
         if(mode.equals("TeleOp"))
         {
-            while (opModeIsActive())
-            {
+
                 motorFL.setPower(1);
                 motorFR.setPower(-1);
                 motorBR.setPower(-1);
                 motorBL.setPower(1);
                 telemetry.addData("Path", "Going forward for %d seconds",runtime.seconds());
                 telemetry.update();
-            }
+
         }
         else
         {
@@ -87,6 +88,10 @@ public class RobotMovement extends LinearOpMode implements RobotVariable
             int tick =DistanceToTick(distance);
         }
     }
+
+
+
+
     @Override
     public void runOpMode() throws InterruptedException
     {
