@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
 
-public class RobotMovement extends LinearOpMode implements RobotVariable
+ public class RobotMovement extends LinearOpMode implements RobotVariable
 {
 
     HardwarePushbot         robot   = new HardwarePushbot();   // Use a Pushbot's hardware
@@ -93,15 +93,14 @@ public class RobotMovement extends LinearOpMode implements RobotVariable
 
 
     @Override
-    public void runOpMode() throws InterruptedException
+    public  void runOpMode() throws InterruptedException
     {
         motorFL = hardwareMap.get(DcMotor.class, "motor_fl");
         motorFR = hardwareMap.get(DcMotor.class, "motor_fr");
         motorBL = hardwareMap.get(DcMotor.class, "motor_bl");
         motorBR = hardwareMap.get(DcMotor.class, "motor_br");
         robot.init(hardwareMap);
-        waitForStart();
-        runtime.reset();
+
 
 
 

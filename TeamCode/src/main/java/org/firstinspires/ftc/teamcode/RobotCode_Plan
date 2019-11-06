@@ -1,0 +1,23 @@
+RobotVariable Interface should contain all the variables we need,
+such as wheel circumference, speed, etc
+
+RobotMovement should contain all the common movements in both Autonomous and TeleOp
+such as goForward, backward, etc
+
+For Go Right/Left, there are other methods declared: TurnRight/Left
+Go Right/Left is method merged with TurnRight/Left and linear movement
+
+If this is done, we should be able to simply extend RobotMovement class on Auton/TeleOp class
+**important
+Use annonymous class to add up the varying functions, to use pre-declared methods
+==>See TestClass
+
+ToDo List
+- Decide what wheel we are going to use (I don't think Encoder will be precise if we keep using same wheels now)
+        -Test if the wheels we are currently using is accurate in high speed, use it
+        -Or do some physics calculation(Is friction constant in specificant of our wheel?)
+- Linear Movement speed adjustment system so that robot doesn't have to slide/ grind some gears due to rapid stop)
+        -Quite important to make sure it's not sliding when start moving and stop moving.
+- Figure out How to get Encoder data from our robot(this depends on motor, if I'm right, if not, tell me)
+- micro Code System(look programming team flowchart slide) for Auton Code so that we can import it on Auton
+- Clean some codes & come up with better system
