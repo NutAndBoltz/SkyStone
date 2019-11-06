@@ -12,6 +12,10 @@ public class RobotMovement extends LinearOpMode implements RobotVariable
     HardwarePushbot         robot   = new HardwarePushbot();   // Use a Pushbot's hardware
     ElapsedTime     runtime = new ElapsedTime();
 
+    DcMotor motorFL = null;
+    DcMotor motorFR = null;
+    DcMotor motorBL = null;
+    DcMotor motorBR = null;
 
     public int DistanceToTick(double distance)
     {
@@ -23,11 +27,20 @@ public class RobotMovement extends LinearOpMode implements RobotVariable
     {
         if(mode.equals("TeleOp"))
         {
-            //move infinetly
+            while (opModeIsActive())
+            {
+                motorFL.setPower(1);
+                motorFR.setPower(-1);
+                motorBR.setPower(-1);
+                motorBL.setPower(1);
+                telemetry.addData("Path", "Going forward for %d seconds",runtime.seconds());
+                telemetry.update();
+            }
         }
         else
         {
             int tick =DistanceToTick(distance);
+           //idk how to get
         }
 
     }
@@ -75,7 +88,17 @@ public class RobotMovement extends LinearOpMode implements RobotVariable
         }
     }
     @Override
-    public void runOpMode() throws InterruptedException {
+    public void runOpMode() throws InterruptedException
+    {
+        motorFL = hardwareMap.get(DcMotor.class, "motor_fl");
+        motorFR = hardwareMap.get(DcMotor.class, "motor_fr");
+        motorBL = hardwareMap.get(DcMotor.class, "motor_bl");
+        motorBR = hardwareMap.get(DcMotor.class, "motor_br");
+        robot.init(hardwareMap);
+        waitForStart();
+        runtime.reset();
+
+
 
 
     }
