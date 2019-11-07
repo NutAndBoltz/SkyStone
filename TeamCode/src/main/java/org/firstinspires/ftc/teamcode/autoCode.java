@@ -87,8 +87,7 @@ public class autoCode extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 /*
-        // strafe to the right
-        runtime.reset();
+        // strafe to the        runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 1.0)) {
             motorFL.setPower(-FORWARD_SPEED);
             motorFR.setPower(-FORWARD_SPEED);
@@ -109,32 +108,32 @@ public class autoCode extends LinearOpMode {
         }
 */
         // Drive backward for 0.3 seconds
-        runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 0.3)) {
-            motorFL.setPower(FORWARD_SPEED);
-            motorFR.setPower(-FORWARD_SPEED);
-            motorBR.setPower(-FORWARD_SPEED);
-            motorBL.setPower(FORWARD_SPEED);
-            telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
-            telemetry.update();
-        }
-        while (opModeIsActive() && (runtime.seconds() < 2.0)) {
-            motorFR.setPower(STOP_SPEED);
-            motorFL.setPower(STOP_SPEED);
-            motorBR.setPower(STOP_SPEED);
-            motorBL.setPower(STOP_SPEED);
-            telemetry.addData("Motor", "Stopped");    //
-            telemetry.update();
-        }
-
+//        runtime.reset();
+//        while (opModeIsActive() && (runtime.seconds() < 2)) {
+//            motorFL.setPower(FORWARD_SPEED);
+//            motorFR.setPower(-FORWARD_SPEED);
+//            motorBR.setPower(-FORWARD_SPEED);
+//            motorBL.setPower(FORWARD_SPEED);
+//            telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
+//            telemetry.update();
+//        }
+//        while (opModeIsActive() && (runtime.seconds() < 2.0)) {
+//            motorFR.setPower(STOP_SPEED);
+//            motorFL.setPower(STOP_SPEED);
+//            motorBR.setPower(STOP_SPEED);
+//            motorBL.setPower(STOP_SPEED);
+//            telemetry.addData("Motor", "Stopped");    //
+//            telemetry.update();
+//        }
+//
 
         // strafe to the left
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 0.8)) {
+        while (opModeIsActive() && (runtime.seconds() < 1)) {
             motorFL.setPower(FORWARD_SPEED);
-            motorFR.setPower(-FORWARD_SPEED);
+            motorFR.setPower(FORWARD_SPEED);
             motorBR.setPower(-FORWARD_SPEED);
-            motorBL.setPower(FORWARD_SPEED);
+            motorBL.setPower(-FORWARD_SPEED);
 
             telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
             telemetry.addData("Shaft Left",null);
@@ -152,7 +151,7 @@ public class autoCode extends LinearOpMode {
 
         //drive forward to crater
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 3.0)) {
+        while (opModeIsActive() && (runtime.seconds() < 1.5)) {
             motorFL.setPower(-FORWARD_SPEED);
             motorFR.setPower(FORWARD_SPEED);
             motorBR.setPower(FORWARD_SPEED);
@@ -160,7 +159,7 @@ public class autoCode extends LinearOpMode {
             telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
         }
-        while (opModeIsActive() && (runtime.seconds() < 2.0)) {
+        while (opModeIsActive() && (runtime.seconds() < 1)) {
             motorFR.setPower(STOP_SPEED);
             motorFL.setPower(STOP_SPEED);
             motorBR.setPower(STOP_SPEED);

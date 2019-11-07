@@ -71,14 +71,15 @@ public class autoCode_DaeOck extends RobotMovement {
     static final double     STOP_SPEED = 0;
 
     @Override
-    public void runOpMode() {
+    public void runOpMode() throws InterruptedException {
+        super.runOpMode();
 
 
 
         // Drive backward for 0.3 seconds
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 0.3)) {
-            MoveBackward(0, "TeleOp");
+            super.MoveBackward(0, "TeleOp");
             telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
         }
@@ -95,7 +96,7 @@ public class autoCode_DaeOck extends RobotMovement {
         // strafe to the left
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 0.8)) {
-            MoveLeft(0,"TeleOp");
+            super.MoveLeft(0,"TeleOp");
 
         }
 
@@ -111,7 +112,7 @@ public class autoCode_DaeOck extends RobotMovement {
         //drive forward to crater
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 3.0)) {
-            MoveForwared(0,"TeleOp");
+            super.MoveForwared(0,"TeleOp");
         }
         while (opModeIsActive() && (runtime.seconds() < 2.0)) {
             motorFR.setPower(STOP_SPEED);
