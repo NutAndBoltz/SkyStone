@@ -50,6 +50,12 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
         if(mode.equals("TeleOp"))
         {
             //move infinetly
+            motorFL.setPower(-1);
+            motorFR.setPower(1);
+            motorBR.setPower(1);
+            motorBL.setPower(-1);
+            telemetry.addData("Path", "Going forward for %d seconds",runtime.seconds());
+            telemetry.update();
         }
         else
         {
@@ -70,6 +76,13 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
         if(mode.equals("TeleOp"))
         {
             //move infinetly
+            motorFL.setPower(1);
+            motorFR.setPower(1);
+            motorBR.setPower(-1);
+            motorBL.setPower(-1);
+            telemetry.addData("Path", "Going forward for %d seconds",runtime.seconds());
+            telemetry.update();
+
         }
         else
         {
@@ -82,6 +95,12 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
         if(mode.equals("TeleOp"))
         {
             //move infinetly
+            motorFL.setPower(-1);
+            motorFR.setPower(-1);
+            motorBR.setPower(1);
+            motorBL.setPower(1);
+            telemetry.addData("Path", "Going forward for %d seconds",runtime.seconds());
+            telemetry.update();
         }
         else
         {
@@ -99,7 +118,19 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
         motorFR = hardwareMap.get(DcMotor.class, "motor_fr");
         motorBL = hardwareMap.get(DcMotor.class, "motor_bl");
         motorBR = hardwareMap.get(DcMotor.class, "motor_br");
+        telemetry.addData("Status", "Initialized");
+        telemetry.update();
+
+        // Wait for the game to start (driver presses PLAY)
+        waitForStart();
         robot.init(hardwareMap);
+        double G1rightStickY = -gamepad1.right_stick_y;
+        double G1leftStickY = -gamepad1.left_stick_y;
+        float G1left_trigger = gamepad1.left_trigger;
+        float G1right_trigger= gamepad1.right_trigger;
+        boolean G1buttonB = gamepad1.b;
+        float dpadThreshold = 0.2f;
+
 
 
 

@@ -48,13 +48,15 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.robot.Robot;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous(name="autoCode", group="auto")
 //@Disabled
 
-public class autoCode extends LinearOpMode {
+public class autoCode_DaeOck extends RobotMovement {
 
     /* Declare OpMode members. */
     private ElapsedTime     runtime = new ElapsedTime();
@@ -71,50 +73,12 @@ public class autoCode extends LinearOpMode {
     @Override
     public void runOpMode() {
 
-        /*
-         * Initialize the drive system variables.
-         * The init() method of the hardware class does all the work here
-         */
-        motorFL = hardwareMap.get(DcMotor.class, "motor_fl");
-        motorFR = hardwareMap.get(DcMotor.class, "motor_fr");
-        motorBL = hardwareMap.get(DcMotor.class, "motor_bl");
-        motorBR = hardwareMap.get(DcMotor.class, "motor_br");
 
-        // Send telemetry message to signify robot waiting;
-        telemetry.addData("Status", "Ready to run");    //
-        telemetry.update();
 
-        // Wait for the game to start (driver presses PLAY)
-        waitForStart();
-/*
-        // strafe to the right
-        runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1.0)) {
-            motorFL.setPower(-FORWARD_SPEED);
-            motorFR.setPower(-FORWARD_SPEED);
-            motorBR.setPower(FORWARD_SPEED);
-            motorBL.setPower(FORWARD_SPEED);
-
-            telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
-            telemetry.update();
-        }
-
-        while (opModeIsActive() && (runtime.seconds() < 2.0)) {
-            motorFL.setPower(STOP_SPEED);
-            motorFR.setPower(STOP_SPEED);
-            motorBR.setPower(STOP_SPEED);
-            motorBL.setPower(STOP_SPEED);
-            telemetry.addData("Motor", "Stopped");    //
-            telemetry.update();
-        }
-*/
         // Drive backward for 0.3 seconds
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 0.3)) {
-            motorFL.setPower(FORWARD_SPEED);
-            motorFR.setPower(-FORWARD_SPEED);
-            motorBR.setPower(-FORWARD_SPEED);
-            motorBL.setPower(FORWARD_SPEED);
+            MoveBackward(0, "TeleOp");
             telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
         }
