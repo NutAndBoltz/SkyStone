@@ -53,7 +53,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.robot.Robot;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="autoCode", group="auto")
+@Autonomous(name="autoCode_DaeOck", group="auto")
 //@Disabled
 
 public class autoCode_DaeOck extends RobotMovement {
@@ -95,14 +95,8 @@ public class autoCode_DaeOck extends RobotMovement {
         // strafe to the left
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 0.8)) {
-            motorFL.setPower(FORWARD_SPEED);
-            motorFR.setPower(-FORWARD_SPEED);
-            motorBR.setPower(-FORWARD_SPEED);
-            motorBL.setPower(FORWARD_SPEED);
+            MoveLeft(0,"TeleOp");
 
-            telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
-            telemetry.addData("Shaft Left",null);
-            telemetry.update();
         }
 
         while (opModeIsActive() && (runtime.seconds() < 2.0)) {
@@ -117,12 +111,7 @@ public class autoCode_DaeOck extends RobotMovement {
         //drive forward to crater
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 3.0)) {
-            motorFL.setPower(-FORWARD_SPEED);
-            motorFR.setPower(FORWARD_SPEED);
-            motorBR.setPower(FORWARD_SPEED);
-            motorBL.setPower(-FORWARD_SPEED);
-            telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
-            telemetry.update();
+            MoveForwared(0,"TeleOp");
         }
         while (opModeIsActive() && (runtime.seconds() < 2.0)) {
             motorFR.setPower(STOP_SPEED);
