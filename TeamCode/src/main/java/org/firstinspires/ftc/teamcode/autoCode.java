@@ -151,11 +151,33 @@ public class autoCode extends LinearOpMode {
 
         //drive forward to crater
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1.5)) {
+        while (opModeIsActive() && (runtime.seconds() < 1.8)) {
             motorFL.setPower(-FORWARD_SPEED);
             motorFR.setPower(FORWARD_SPEED);
             motorBR.setPower(FORWARD_SPEED);
             motorBL.setPower(-FORWARD_SPEED);
+            telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
+        while (opModeIsActive() && (runtime.seconds() < 1)) {
+            motorFR.setPower(STOP_SPEED);
+            motorFL.setPower(STOP_SPEED);
+            motorBR.setPower(STOP_SPEED);
+            motorBL.setPower(STOP_SPEED);
+            telemetry.addData("Motor", "Stopped");    //
+            telemetry.update();
+        }
+        telemetry.addData("Path", "Complete");
+        telemetry.update();
+
+
+        //drive backward to bridge
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 1.6)) {
+            motorFL.setPower(FORWARD_SPEED);
+            motorFR.setPower(-FORWARD_SPEED);
+            motorBR.setPower(-FORWARD_SPEED);
+            motorBL.setPower(FORWARD_SPEED);
             telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
         }
