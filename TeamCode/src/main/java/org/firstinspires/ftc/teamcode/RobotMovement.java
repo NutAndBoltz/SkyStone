@@ -30,10 +30,10 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
         if(mode.equals("TeleOp"))
         {
 
-                motorFL.setPower(1);
-                motorFR.setPower(-1);
-                motorBR.setPower(-1);
-                motorBL.setPower(1);
+                motorFL.setPower(-1);
+                motorFR.setPower(1);
+                motorBR.setPower(1);
+                motorBL.setPower(-1);
                 telemetry.addData("Path", "Going forward for %d seconds",runtime.seconds());
                 telemetry.update();
 
@@ -50,10 +50,10 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
         if(mode.equals("TeleOp"))
         {
             //move infinetly
-            motorFL.setPower(-1);
-            motorFR.setPower(1);
-            motorBR.setPower(1);
-            motorBL.setPower(-1);
+            motorFL.setPower(1);
+            motorFR.setPower(-1);
+            motorBR.setPower(-1);
+            motorBL.setPower(1);
             telemetry.addData("Path", "Going forward for %d seconds",runtime.seconds());
             telemetry.update();
         }
@@ -76,10 +76,10 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
         if(mode.equals("TeleOp"))
         {
             //move infinetly
-            motorFL.setPower(1);
-            motorFR.setPower(1);
-            motorBR.setPower(-1);
-            motorBL.setPower(-1);
+            motorFL.setPower(-1);
+            motorFR.setPower(-1);
+            motorBR.setPower(1);
+            motorBL.setPower(1);
             telemetry.addData("Path", "Going forward for %d seconds",runtime.seconds());
             telemetry.update();
 
@@ -95,10 +95,10 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
         if(mode.equals("TeleOp"))
         {
             //move infinetly
-            motorFL.setPower(-1);
-            motorFR.setPower(-1);
-            motorBR.setPower(1);
-            motorBL.setPower(1);
+            motorFL.setPower(1);
+            motorFR.setPower(1);
+            motorBR.setPower(-1);
+            motorBL.setPower(-1);
             telemetry.addData("Path", "Going forward for %d seconds",runtime.seconds());
             telemetry.update();
         }

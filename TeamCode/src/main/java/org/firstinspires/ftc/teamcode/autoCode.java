@@ -151,7 +151,7 @@ public class autoCode extends LinearOpMode {
 
         //drive forward to crater
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1.8)) {
+        while (opModeIsActive() && (runtime.seconds() < 3)) {
             motorFL.setPower(-FORWARD_SPEED);
             motorFR.setPower(FORWARD_SPEED);
             motorBR.setPower(FORWARD_SPEED);
