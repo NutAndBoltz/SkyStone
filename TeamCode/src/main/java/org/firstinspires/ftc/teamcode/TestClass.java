@@ -30,7 +30,7 @@
 package org.firstinspires.ftc.teamcode;
 
 
-
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 /**
  * This file demonstrates how to play one of the several SKYSTONE/Star Wars sounds loaded into the SDK.
@@ -44,13 +44,13 @@ package org.firstinspires.ftc.teamcode;
  *      Use the DPAD to change the selected sound, and the Right Bumper to play it.
  */
 
-
+@Autonomous(name="TestClass", group="auto")
 public class TestClass extends RobotMovement {
     @Override
     public void runOpMode() throws InterruptedException {
-        super.runOpMode(); //everything imported yay
+       super.robotMain(); //everything imported yay
         //do some stuff we need to do
-       super.MoveForwared(0,"TeleOp"); // distance doesn't matter in TeleOp
+       MoveForwared(0,"TeleOp"); // distance doesn't matter in TeleOp
 //        super.MoveForwared(50,"Auton");// specify distance and put Auton on mode
 
     }

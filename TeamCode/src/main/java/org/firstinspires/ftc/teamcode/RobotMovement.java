@@ -137,4 +137,7 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
 
 
     }
+    public void robotMain() throws InterruptedException {
+        runOpMode();
+    }
 }
