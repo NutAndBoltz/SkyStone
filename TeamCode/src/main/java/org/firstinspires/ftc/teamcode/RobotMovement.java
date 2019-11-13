@@ -29,6 +29,11 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
     {
         if(mode.equals("TeleOp"))
         {
+            runtime.reset();
+            while(runtime.seconds()<1.0)
+            {
+
+
 
                 motorFL.setPower(-1);
                 motorFR.setPower(1);
@@ -36,6 +41,13 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
                 motorBL.setPower(-1);
                 telemetry.addData("Path", "Going forward for %d seconds",runtime.seconds());
                 telemetry.update();
+            }
+            motorFL.setPower(0);
+            motorFR.setPower(0);
+            motorBR.setPower(0);
+            motorBL.setPower(0);
+
+
 
         }
         else
@@ -114,6 +126,7 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
     @Override
     public  void runOpMode() throws InterruptedException
     {
+        telemetry.addData("TestClass","RobotMovement.class runOpMode running");
         motorFL = hardwareMap.get(DcMotor.class, "motor_fl");
         motorFR = hardwareMap.get(DcMotor.class, "motor_fr");
         motorBL = hardwareMap.get(DcMotor.class, "motor_bl");

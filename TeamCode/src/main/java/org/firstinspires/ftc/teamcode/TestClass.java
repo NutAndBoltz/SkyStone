@@ -47,10 +47,13 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 @Autonomous(name="TestClass", group="auto")
 public class TestClass extends RobotMovement {
     @Override
-    public void runOpMode() throws InterruptedException {
-       super.robotMain(); //everything imported yay
+    public void robotMain() throws InterruptedException {
+        super.robotMain();
+        telemetry.addData("TestClass","TestClass running");
+        RobotMovement robotMovement= new RobotMovement();
+        robotMain();
         //do some stuff we need to do
-       MoveForwared(0,"TeleOp"); // distance doesn't matter in TeleOp
+        MoveForwared(0,"TeleOp"); // distance doesn't matter in TeleOp
 //        super.MoveForwared(50,"Auton");// specify distance and put Auton on mode
 
     }
