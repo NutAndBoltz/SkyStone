@@ -7,11 +7,11 @@ public class robotMain extends robotInitialize {
     @Override
     public void runOpMode() throws InterruptedException {
         super.runOpMode();
-        while (super.opModeIsActive()) {
+        while (opModeIsActive()) {
 
 
-            super.motorBL.setPower(1);
-            super.motorBR.setPower(1);
+            motorBL.setPower(1);
+            motorBR.setPower(-1);
 
 
 
