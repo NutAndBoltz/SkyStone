@@ -54,7 +54,7 @@ public class TestClass extends RobotMovement {
         robotMain();
         //do some stuff we need to do
         MoveForwared(0,"TeleOp"); // distance doesn't matter in TeleOp
-//        super.MoveForwared(50,"Auton");// specify distance and put Auton on mode
+
 
     }
 }
