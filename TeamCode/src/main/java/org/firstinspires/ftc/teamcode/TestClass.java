@@ -51,7 +51,7 @@ public class TestClass extends RobotMovement {
         super.robotMain();
         telemetry.addData("TestClass","TestClass running");
         RobotMovement robotMovement= new RobotMovement();
-        robotMain();
+
         //do some stuff we need to do
         MoveForwared(0,"TeleOp"); // distance doesn't matter in TeleOp
 
