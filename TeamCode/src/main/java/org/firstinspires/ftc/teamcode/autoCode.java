@@ -125,8 +125,6 @@ public class autoCode extends LinearOpMode {
 //            telemetry.addData("Motor", "Stopped");    //
 //            telemetry.update();
 //        }
-//
-
 
         //delay
         runtime.reset();
@@ -182,7 +180,6 @@ public class autoCode extends LinearOpMode {
         }
         telemetry.addData("Path", "Complete");
         telemetry.update();
-zQ
 */
 
         //drive backward to bridge
