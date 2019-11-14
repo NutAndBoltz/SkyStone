@@ -21,10 +21,10 @@ public class re_autoCode extends robotInitialize implements robotVariable {
         // strafe to the left
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 1)) {
-            motorFL.setPower(auto_FORWARD_SPEED2);
-            motorFR.setPower(auto_FORWARD_SPEED2);
-            motorBR.setPower(-auto_FORWARD_SPEED2);
-            motorBL.setPower(-auto_FORWARD_SPEED2);
+            motorFL.setPower(auto_FORWARD_SPEED);
+            motorFR.setPower(auto_FORWARD_SPEED);
+            motorBR.setPower(-auto_FORWARD_SPEED);
+            motorBL.setPower(-auto_FORWARD_SPEED);
 
             telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
             telemetry.addData("Shaft Left",null);
@@ -42,10 +42,10 @@ public class re_autoCode extends robotInitialize implements robotVariable {
         //drive backward to bridge
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() <1.0)) {
-            motorFL.setPower(auto_FORWARD_SPEED2);
-            motorFR.setPower(-auto_FORWARD_SPEED2);
-            motorBR.setPower(-auto_FORWARD_SPEED2);
-            motorBL.setPower(auto_FORWARD_SPEED2);
+            motorFL.setPower(auto_FORWARD_SPEED);
+            motorFR.setPower(-auto_FORWARD_SPEED);
+            motorBR.setPower(-auto_FORWARD_SPEED);
+            motorBL.setPower(auto_FORWARD_SPEED);
             telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
         }
