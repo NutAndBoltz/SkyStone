@@ -8,11 +8,12 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class robotInitialize extends LinearOpMode implements robotVariable
 {
-    private ElapsedTime runtime = new ElapsedTime();
+    protected ElapsedTime runtime = new ElapsedTime();
     DcMotor motorFL;
     DcMotor motorFR;
     DcMotor motorBL;
     DcMotor motorBR;
+
 
 
 
