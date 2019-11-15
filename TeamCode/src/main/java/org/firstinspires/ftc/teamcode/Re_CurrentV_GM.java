@@ -30,7 +30,15 @@ public class Re_CurrentV_GM extends robotInitialize{
                 this.motorBR.setPower(1);
                 this.motorBL.setPower(-1);
 
-            } else {
+            } else if(gamepad1.y){ //move claw down
+                this.foundationClaw.setPosition(0);
+
+            } else if(gamepad1.b){ //move claw 90 deg
+                this.foundationClaw.setPosition(0.5);
+
+            } else if(gamepad1.a){ //move claw up
+                this.foundationClaw.setPosition(1);
+            }else {
                 //strafe right
                 this.motorFL.setPower(G1leftStickY);
                 this.motorFR.setPower(G1leftStickY);

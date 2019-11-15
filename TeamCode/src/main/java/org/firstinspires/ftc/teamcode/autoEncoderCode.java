@@ -41,7 +41,7 @@ public class autoEncoderCode extends LinearOpMode {
         motorBL = hardwareMap.get(DcMotor.class, "motor_bl");
         motorBR = hardwareMap.get(DcMotor.class, "motor_br");
 
-
+        //set direction for each mecanum wheel
         motorFL.setDirection(DcMotor.Direction.FORWARD);
         motorBL.setDirection(DcMotor.Direction.FORWARD);
         motorFR.setDirection(DcMotor.Direction.REVERSE);
@@ -63,9 +63,9 @@ public class autoEncoderCode extends LinearOpMode {
         motorBL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorBR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-
+        //initiate the servo claw that will move the foundation
         foundationClaw = hardwareMap.get(Servo.class, "foundationClaw");
-
+        //place the claw at its start position so the robot satisfies measurement requirements
         foundationClaw.setPosition(1);
 
         // Send telemetry message to indicate successful Encoder reset
@@ -90,12 +90,17 @@ public class autoEncoderCode extends LinearOpMode {
             //Strafe right to the middle of the foundation
 
             //Move servo arm down to latch onto foundation squares
-            foundationClaw.setPosition(0);
+            foundationClaw.setPosition(1);
 
             //Move backward into the depot (leave enough space for robot)
             driveBackward(10);
 
+            //Pick up claw
+            foundationClaw.setPosition(0.7);
+
             //Strafe left until stopped under the sky bridge
+
+
 
         }
 
@@ -142,8 +147,6 @@ public class autoEncoderCode extends LinearOpMode {
                     (motorFL.isBusy() && motorFR.isBusy() && motorBL.isBusy() && motorBR.isBusy())) {
 
                 // Display it for the driver.
-
-
                 telemetry.addData("motorFL", "%7d", motorFL.getCurrentPosition());
                 telemetry.addData("motorFR", "%7d", motorFR.getCurrentPosition() );
                 telemetry.addData("motorBL", "%7d", motorBL.getCurrentPosition());
@@ -204,8 +207,6 @@ public class autoEncoderCode extends LinearOpMode {
                     (motorFL.isBusy() && motorFR.isBusy() && motorBL.isBusy() && motorBR.isBusy())) {
 
                 // Display it for the driver.
-
-
                 telemetry.addData("motorFL", "%7d", motorFL.getCurrentPosition());
                 telemetry.addData("motorFR", "%7d", motorFR.getCurrentPosition() );
                 telemetry.addData("motorBL", "%7d", motorBL.getCurrentPosition());
