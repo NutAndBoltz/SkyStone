@@ -1,14 +1,13 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous(name="autoEncoderCode", group="auto")
-@Disabled
+//@Disabled
 public class autoEncoderCode extends LinearOpMode {
 
     private ElapsedTime runtime = new ElapsedTime();
@@ -81,13 +80,25 @@ public class autoEncoderCode extends LinearOpMode {
 
         while (opModeIsActive()) {
 
-            //Move forward to a little bit before the edge of the foundation
-            driveForward(8);
-
             //Move servo arm up
             foundationClaw.setPosition(0.5);
 
+            //Move forward to a little bit before the edge of the foundation
+            driveForward(36);
+
             //Strafe right to the middle of the foundation
+            runtime.reset();
+            while (opModeIsActive() && (runtime.seconds() < 1)) {
+                motorFL.setPower(-DRIVE_SPEED);
+                motorFR.setPower(-DRIVE_SPEED);
+                motorBR.setPower(DRIVE_SPEED);
+                motorBL.setPower(DRIVE_SPEED);
+
+                telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
+                telemetry.addData("Shaft Left",null);
+                telemetry.update();
+            }
+
 
             //Move servo arm down to latch onto foundation squares
             foundationClaw.setPosition(1);
@@ -99,6 +110,19 @@ public class autoEncoderCode extends LinearOpMode {
             foundationClaw.setPosition(0.7);
 
             //Strafe left until stopped under the sky bridge
+            runtime.reset();
+            while (opModeIsActive() && (runtime.seconds() < 3)) {
+                motorFL.setPower(DRIVE_SPEED);
+                motorFR.setPower(DRIVE_SPEED);
+                motorBR.setPower(-DRIVE_SPEED);
+                motorBL.setPower(-DRIVE_SPEED);
+
+                telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
+                telemetry.addData("Shaft Left",null);
+                telemetry.update();
+            }
+
+            stopRobot ();
 
 
 
