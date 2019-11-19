@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class robotInitialize extends LinearOpMode implements robotVariable
 {
-    protected ElapsedTime runtime = new ElapsedTime();
+    ElapsedTime runtime = new ElapsedTime();
     DcMotor motorFL;
     DcMotor motorFR;
     DcMotor motorBL;
@@ -20,11 +20,7 @@ public class robotInitialize extends LinearOpMode implements robotVariable
 
     @Override
     public void runOpMode() throws InterruptedException {
-        motorFL = hardwareMap.get(DcMotor.class, "motor_fl");
-        motorFR = hardwareMap.get(DcMotor.class, "motor_fr");
-        motorBL = hardwareMap.get(DcMotor.class, "motor_bl");
-        motorBR = hardwareMap.get(DcMotor.class, "motor_br");
-        foundationClaw = hardwareMap.get(Servo.class, "foundationClaw");
+       init();
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
