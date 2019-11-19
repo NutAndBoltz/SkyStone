@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 
-public class ourRobot implements robotVariable
+public class robotInit implements robotVariable
 {
     /* Public OpMode members. */
     public DcMotor motorFL;
@@ -22,9 +22,11 @@ public class ourRobot implements robotVariable
     ElapsedTime runtime  = new ElapsedTime();
 
     /* Constructor */
-    public ourRobot(){
+    public robotInit(){
 
     }
+
+
 
     /* Initialize standard Hardware interfaces */
     public void init(HardwareMap ahwMap) {

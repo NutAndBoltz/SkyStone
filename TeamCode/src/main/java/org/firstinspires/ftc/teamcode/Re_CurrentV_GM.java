@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 @TeleOp(name = "re_CurrentV_GM")
-public class Re_CurrentV_GM extends robotInitialize{
+public class Re_CurrentV_GM extends robotMovements {
     @Override
     public void runOpMode() throws InterruptedException {
         super.runOpMode();

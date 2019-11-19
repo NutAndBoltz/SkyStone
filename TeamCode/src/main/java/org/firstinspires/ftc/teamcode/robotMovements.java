@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 
-public class robotInitialize extends LinearOpMode implements robotVariable
+public class robotMovements extends LinearOpMode implements robotVariable
 {
     ElapsedTime runtime = new ElapsedTime();
     DcMotor motorFL;
@@ -16,6 +16,20 @@ public class robotInitialize extends LinearOpMode implements robotVariable
     DcMotor motorBR;
     Servo foundationClaw;
 
+    public void moveForward(String opMode, double distance)
+    {
+        if(opMode.equals("AUTO"))
+        {
+
+        }
+        else
+        {
+            motorBL.setPower(teleOP_FORWARD_SPEED);
+            motorBR.setPower(teleOP_FORWARD_SPEED);
+            motorFL.setPower(teleOP_FORWARD_SPEED);
+            motorFR.setPower(teleOP_FORWARD_SPEED);
+        }
+    }
 
 
     @Override
