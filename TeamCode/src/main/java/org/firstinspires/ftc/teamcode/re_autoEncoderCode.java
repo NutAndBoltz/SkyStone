@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="autoEncoderCode", group="auto")
+@Autonomous(name="re_autoEncoderCode", group="auto")
 //@Disabled
 public class re_autoEncoderCode extends robotMovements{
 

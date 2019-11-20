@@ -195,55 +195,141 @@ public class robotMovements extends LinearOpMode implements robotVariable
     }
     public void moveRight(String opMode,double inches)
     {
-        if(opMode.equals("AUTO")) {
-            stopEncoderMode();
-            //Strafe right to the middle of the foundation
-            runtime.reset();
-            while (opModeIsActive() && (runtime.seconds() < 1)) {
-                robot.motorFL.setPower(-DRIVE_SPEED);
-                robot.motorFR.setPower(-DRIVE_SPEED);
-                robot.motorBR.setPower(DRIVE_SPEED);
-                robot.motorBL.setPower(DRIVE_SPEED);
-
-                telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
-                telemetry.addData("Shaft Left", null);
-                telemetry.update();
-                startEncoderMode();
-            }
-
-        }
-        else
+        if(opMode.equals("AUTO"))
         {
-            robot.motorFL.setPower(-DRIVE_SPEED);
-            robot.motorFR.setPower(-DRIVE_SPEED);
-            robot.motorBR.setPower(DRIVE_SPEED);
-            robot.motorBL.setPower(DRIVE_SPEED);
-        }
-    }
-    public void moveLeft(String opMode,double inches)
-    {
-        if(opMode.equals("AUTO")) {
-            stopEncoderMode();
-            //Strafe right to the middle of the foundation
-            runtime.reset();
-            while (opModeIsActive() && (runtime.seconds() < 1)) {
-                robot.motorFL.setPower(DRIVE_SPEED);
-                robot.motorFR.setPower(DRIVE_SPEED);
-                robot.motorBR.setPower(-DRIVE_SPEED);
-                robot.motorBL.setPower(-DRIVE_SPEED);
+            int newmotorFLTarget;
+            int newmotorFRTarget;
+            int newmotorBLTarget;
+            int newmotorBRTarget;
 
-                telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
-                telemetry.addData("Shaft Left", null);
-                telemetry.update();
-                startEncoderMode();
+            // Ensure that the opmode is still active
+            if (opModeIsActive()) {
+
+                // Determine new target position, and pass to motor controller
+                newmotorFLTarget = robot.motorFL.getCurrentPosition() + (int)(inches * COUNTS_PER_INCH);
+                newmotorFRTarget = robot.motorFR.getCurrentPosition() - (int)(inches * COUNTS_PER_INCH);
+                newmotorBLTarget = robot.motorBL.getCurrentPosition() - (int)(inches * COUNTS_PER_INCH);
+                newmotorBRTarget = robot.motorBR.getCurrentPosition() + (int)(inches * COUNTS_PER_INCH);
+                robot.motorFL.setTargetPosition(newmotorFLTarget);
+                robot.motorFR.setTargetPosition(newmotorFRTarget);
+                robot.motorBL.setTargetPosition(newmotorBLTarget);
+                robot.motorBR.setTargetPosition(newmotorBRTarget);
+
+                // Turn On RUN_TO_POSITION
+                robot.motorFL.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                robot.motorFR.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                robot.motorBL.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                robot.motorBR.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+                robot.motorFL.setPower(Math.abs(DRIVE_SPEED));
+                robot.motorFR.setPower(Math.abs(DRIVE_SPEED));
+                robot.motorBL.setPower(Math.abs(DRIVE_SPEED));
+                robot.motorBR.setPower(Math.abs(DRIVE_SPEED));
+                // keep looping while we are still active, and there is time left, and both motors are running.
+                // Note: We use (isBusy() && isBusy()) in the loop test, which means that when EITHER motor hits
+                // its target position, the motion will stop.  This is "safer" in the event that the robot will
+                // always end the motion as soon as possible.
+                // However, if you require that BOTH motors have finished their moves before the robot continues
+                // onto the next step, use (isBusy() || isBusy()) in the loop test.
+                while (opModeIsActive() &&
+                        (robot.motorFL.isBusy() && robot.motorFR.isBusy() && robot.motorBL.isBusy() && robot.motorBR.isBusy())) {
+
+                    // Display it for the driver.
+                    telemetry.addData("motorFL", "%7d", robot.motorFL.getCurrentPosition());
+                    telemetry.addData("motorFR", "%7d", robot.motorFR.getCurrentPosition() );
+                    telemetry.addData("motorBL", "%7d", robot.motorBL.getCurrentPosition());
+                    telemetry.addData("motorBR", "%7d", robot.motorBR.getCurrentPosition());
+                    telemetry.update();
+
+                }
+
+                // Stop all motion;
+                stopRobot();
+
+                // Turn off RUN_TO_POSITION
+                robot.motorFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                robot.motorFR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                robot.motorBL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                robot.motorBR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
             }
 
         }
         else
         {
             robot.motorFL.setPower(DRIVE_SPEED);
+            robot.motorFR.setPower(-DRIVE_SPEED);
+            robot.motorBL.setPower(-DRIVE_SPEED);
+            robot.motorBR.setPower(DRIVE_SPEED);
+        }
+    }
+    public void moveLeft(String opMode,double inches)
+    {
+        if(opMode.equals("AUTO"))
+        {
+            int newmotorFLTarget;
+            int newmotorFRTarget;
+            int newmotorBLTarget;
+            int newmotorBRTarget;
+
+            // Ensure that the opmode is still active
+            if (opModeIsActive()) {
+
+                // Determine new target position, and pass to motor controller
+                newmotorFLTarget = robot.motorFL.getCurrentPosition() - (int)(inches * COUNTS_PER_INCH);
+                newmotorFRTarget = robot.motorFR.getCurrentPosition() + (int)(inches * COUNTS_PER_INCH);
+                newmotorBLTarget = robot.motorBL.getCurrentPosition() + (int)(inches * COUNTS_PER_INCH);
+                newmotorBRTarget = robot.motorBR.getCurrentPosition() - (int)(inches * COUNTS_PER_INCH);
+                robot.motorFL.setTargetPosition(newmotorFLTarget);
+                robot.motorFR.setTargetPosition(newmotorFRTarget);
+                robot.motorBL.setTargetPosition(newmotorBLTarget);
+                robot.motorBR.setTargetPosition(newmotorBRTarget);
+
+                // Turn On RUN_TO_POSITION
+                robot.motorFL.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                robot.motorFR.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                robot.motorBL.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                robot.motorBR.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+                robot.motorFL.setPower(Math.abs(DRIVE_SPEED));
+                robot.motorFR.setPower(Math.abs(DRIVE_SPEED));
+                robot.motorBL.setPower(Math.abs(DRIVE_SPEED));
+                robot.motorBR.setPower(Math.abs(DRIVE_SPEED));
+                // keep looping while we are still active, and there is time left, and both motors are running.
+                // Note: We use (isBusy() && isBusy()) in the loop test, which means that when EITHER motor hits
+                // its target position, the motion will stop.  This is "safer" in the event that the robot will
+                // always end the motion as soon as possible.
+                // However, if you require that BOTH motors have finished their moves before the robot continues
+                // onto the next step, use (isBusy() || isBusy()) in the loop test.
+                while (opModeIsActive() &&
+                        (robot.motorFL.isBusy() && robot.motorFR.isBusy() && robot.motorBL.isBusy() && robot.motorBR.isBusy())) {
+
+                    // Display it for the driver.
+                    telemetry.addData("motorFL", "%7d", robot.motorFL.getCurrentPosition());
+                    telemetry.addData("motorFR", "%7d", robot.motorFR.getCurrentPosition() );
+                    telemetry.addData("motorBL", "%7d", robot.motorBL.getCurrentPosition());
+                    telemetry.addData("motorBR", "%7d", robot.motorBR.getCurrentPosition());
+                    telemetry.update();
+
+                }
+
+                // Stop all motion;
+                stopRobot();
+
+                // Turn off RUN_TO_POSITION
+                robot.motorFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                robot.motorFR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                robot.motorBL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                robot.motorBR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+            }
+
+        }
+        else
+        {
+            robot.motorFL.setPower(-DRIVE_SPEED);
             robot.motorFR.setPower(DRIVE_SPEED);
-            robot.motorBR.setPower(-DRIVE_SPEED);
+            robot.motorBR.setPower(DRIVE_SPEED);
             robot.motorBL.setPower(-DRIVE_SPEED);
         }
     }
