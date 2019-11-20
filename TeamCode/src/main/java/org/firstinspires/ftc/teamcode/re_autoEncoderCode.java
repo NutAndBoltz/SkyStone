@@ -1,19 +1,14 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous(name="re_autoEncoderCode", group="auto")
 //@Disabled
 public class re_autoEncoderCode extends robotMovements{
 
-    private ElapsedTime runtime = new ElapsedTime();
-
     @Override
     public void runOpMode() throws InterruptedException {
         super.runOpMode();
-        init();
-
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Status", "Resetting Encoders");
         telemetry.update();
@@ -44,9 +39,8 @@ public class re_autoEncoderCode extends robotMovements{
             //Pick up claw
             robot.foundationClaw.setPosition(0.7);
 
-            moveLeft("AUTO", 0);
+            moveLeft("AUTO", 5);
 
-            stopRobot();
         }
     }
 }
