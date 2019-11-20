@@ -19,32 +19,32 @@ public class Re_CurrentV_GM extends robotMovements {
 
 
             if (G1left_trigger > 0.5) { //backwards
-                this.motorFL.setPower(1);
-                this.motorFR.setPower(-1);
-                this.motorBR.setPower(-1);
-                this.motorBL.setPower(1);
+                robot.motorFL.setPower(1);
+                robot.motorFR.setPower(-1);
+                robot.motorBR.setPower(-1);
+                robot.motorBL.setPower(1);
 
             } else if (G1right_trigger > 0.5){ //forwards
-                this.motorFL.setPower(-1);
-                this.motorFR.setPower(1);
-                this.motorBR.setPower(1);
-                this.motorBL.setPower(-1);
+                robot.motorFL.setPower(-1);
+                robot.motorFR.setPower(1);
+                robot.motorBR.setPower(1);
+                robot.motorBL.setPower(-1);
 
             } else if(gamepad1.y){ //move claw down
-                this.foundationClaw.setPosition(0);
+                robot.foundationClaw.setPosition(0);
 
             } else if(gamepad1.b){ //move claw 90 deg
-                this.foundationClaw.setPosition(0.5);
+                robot.foundationClaw.setPosition(0.5);
 
             } else if(gamepad1.a){ //move claw up
-                this.foundationClaw.setPosition(1);
+                robot.foundationClaw.setPosition(1);
             }else {
                 //strafe right
-                this.motorFL.setPower(G1leftStickY);
-                this.motorFR.setPower(G1leftStickY);
+                robot.motorFL.setPower(G1leftStickY);
+                robot.motorFR.setPower(G1leftStickY);
                 //strafe left
-                this.motorBR.setPower(-G1rightStickY);
-                this.motorBL.setPower(-G1rightStickY);
+                robot.motorBR.setPower(-G1rightStickY);
+                robot.motorBL.setPower(-G1rightStickY);
             }
 
             telemetry.addData("Status", "Running");

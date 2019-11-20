@@ -2,13 +2,12 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 
-public class robotInit implements robotVariable
+public class robotInit  implements robotVariable
 {
     /* Public OpMode members. */
     public DcMotor motorFL;
@@ -40,10 +39,10 @@ public class robotInit implements robotVariable
         motorBL = hardwareMap.get(DcMotor.class, "motor_bl");
         motorBR = hardwareMap.get(DcMotor.class, "motor_br");
 
-        motorBL.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
-        motorFL.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
-        motorFR.setDirection(DcMotor.Direction.FORWARD);// Set to FORWARD if using AndyMark motors
-        motorBR.setDirection(DcMotor.Direction.FORWARD);// Set to FORWARD if using AndyMark motors
+        motorFL.setDirection(DcMotor.Direction.FORWARD);
+        motorBL.setDirection(DcMotor.Direction.FORWARD);
+        motorFR.setDirection(DcMotor.Direction.REVERSE);
+        motorBR.setDirection(DcMotor.Direction.REVERSE);
 
         // Set all motors to zero power
         motorBL.setPower(0);

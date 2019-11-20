@@ -7,13 +7,13 @@ public class re_autoCode extends robotMovements implements robotVariable {
     @Override
     public void runOpMode() throws InterruptedException {
         super.runOpMode();
-        runtime.reset();
+        robot.runtime.reset();
 
         while (opModeIsActive() && (runtime.seconds() < 10.0)) {
-            motorFL.setPower(STOP_SPEED);
-            motorFR.setPower(STOP_SPEED);
-            motorBR.setPower(STOP_SPEED);
-            motorBL.setPower(STOP_SPEED);
+            robot.motorFL.setPower(STOP_SPEED);
+            robot.motorFR.setPower(STOP_SPEED);
+            robot.motorBR.setPower(STOP_SPEED);
+            robot.motorBL.setPower(STOP_SPEED);
             telemetry.addData("Motor", "Stopped");    //
             telemetry.update();
         }
@@ -21,10 +21,10 @@ public class re_autoCode extends robotMovements implements robotVariable {
         // strafe to the left
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 1)) {
-            motorFL.setPower(auto_FORWARD_SPEED);
-            motorFR.setPower(auto_FORWARD_SPEED);
-            motorBR.setPower(-auto_FORWARD_SPEED);
-            motorBL.setPower(-auto_FORWARD_SPEED);
+            robot.motorFL.setPower(auto_FORWARD_SPEED);
+            robot.motorFR.setPower(auto_FORWARD_SPEED);
+            robot.motorBR.setPower(-auto_FORWARD_SPEED);
+            robot.motorBL.setPower(-auto_FORWARD_SPEED);
 
             telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
             telemetry.addData("Shaft Left",null);
@@ -32,28 +32,28 @@ public class re_autoCode extends robotMovements implements robotVariable {
         }
 
         while (opModeIsActive() && (runtime.seconds() < 8.0)) {
-            motorFL.setPower(STOP_SPEED);
-            motorFR.setPower(STOP_SPEED);
-            motorBR.setPower(STOP_SPEED);
-            motorBL.setPower(STOP_SPEED);
+            robot.motorFL.setPower(STOP_SPEED);
+            robot.motorFR.setPower(STOP_SPEED);
+            robot.motorBR.setPower(STOP_SPEED);
+            robot.motorBL.setPower(STOP_SPEED);
             telemetry.addData("Motor", "Stopped");    //
             telemetry.update();
         }
         //drive backward to bridge
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() <1.0)) {
-            motorFL.setPower(auto_FORWARD_SPEED);
-            motorFR.setPower(-auto_FORWARD_SPEED);
-            motorBR.setPower(-auto_FORWARD_SPEED);
-            motorBL.setPower(auto_FORWARD_SPEED);
+            robot.motorFL.setPower(auto_FORWARD_SPEED);
+            robot.motorFR.setPower(-auto_FORWARD_SPEED);
+            robot.motorBR.setPower(-auto_FORWARD_SPEED);
+            robot.motorBL.setPower(auto_FORWARD_SPEED);
             telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
         }
         while (opModeIsActive() && (runtime.seconds() < 0.9)) {
-            motorFR.setPower(STOP_SPEED);
-            motorFL.setPower(STOP_SPEED);
-            motorBR.setPower(STOP_SPEED);
-            motorBL.setPower(STOP_SPEED);
+            robot.motorFR.setPower(STOP_SPEED);
+            robot.motorFL.setPower(STOP_SPEED);
+            robot.motorBR.setPower(STOP_SPEED);
+            robot.motorBL.setPower(STOP_SPEED);
             telemetry.addData("Motor", "Stopped");
             telemetry.addData("0.9sec",null);
             telemetry.update();
