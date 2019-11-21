@@ -193,6 +193,30 @@ public class robotMovements extends LinearOpMode implements robotVariable
             robot.motorFR.setPower(-teleOP_FORWARD_SPEED);
         }
     }
+    void reportTick()
+    {
+        int FLnow =robot.motorFL.getCurrentPosition();
+        int FRnow =robot.motorFR.getCurrentPosition();
+        int BLnow =robot.motorBL.getCurrentPosition();
+        int BRnow =robot.motorBR.getCurrentPosition();
+        while (opModeIsActive() &&
+                (robot.motorFL.isBusy() && robot.motorFR.isBusy() && robot.motorBL.isBusy() && robot.motorBR.isBusy())) {
+
+            // Display it for the driver.
+            telemetry.addData("motorFL", "%7d", Math.abs(robot.motorFL.getCurrentPosition()-FLnow));
+            telemetry.addData("motorFR", "%7d", Math.abs(robot.motorFR.getCurrentPosition()-FRnow));
+            telemetry.addData("motorBL", "%7d", Math.abs(robot.motorBL.getCurrentPosition()-BLnow));
+            telemetry.addData("motorBR", "%7d", Math.abs(robot.motorBR.getCurrentPosition()-BRnow));
+            telemetry.update();
+            // Turn off RUN_TO_POSITION
+            robot.motorFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            robot.motorFR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            robot.motorBL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            robot.motorBR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        }
+
+    }
     //for test
     void testRight()
     {
