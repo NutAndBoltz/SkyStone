@@ -163,9 +163,9 @@ public class autoCodeLeft extends LinearOpMode {
         // strafe to the left	
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 1)) {
-            motorFL.setPower(FORWARD_SPEED);
+            motorFL.setPower(-FORWARD_SPEED);
             motorFR.setPower(FORWARD_SPEED);
-            motorBR.setPower(-FORWARD_SPEED);
+            motorBR.setPower(FORWARD_SPEED);
             motorBL.setPower(-FORWARD_SPEED);
 
             telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());

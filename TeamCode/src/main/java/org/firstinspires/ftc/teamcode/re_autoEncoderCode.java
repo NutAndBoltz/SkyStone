@@ -25,10 +25,13 @@ public class re_autoEncoderCode extends robotMovements{
         while (opModeIsActive())
         {
             //Move servo arm up
-            robot.foundationClaw.setPosition(0.5);
+            robot.foundationClaw.setPosition(0);
 
             //Move forward to a little bit before the edge of the foundation
-            moveForward("AUTO", 36);
+            moveBackward("AUTO", 10);
+
+            //Strafe left
+            moveRight("AUTO", 5);
 
             //Move servo arm down to latch onto foundation squares
             robot.foundationClaw.setPosition(1);
@@ -36,9 +39,10 @@ public class re_autoEncoderCode extends robotMovements{
             //Move backward into the depot (leave enough space for robot)
             moveBackward("AUTO", 10);
 
-            //Pick up claw
-            robot.foundationClaw.setPosition(0.7);
+            //Move servo arm up
+            robot.foundationClaw.setPosition(0);
 
+            //Strafe right
             moveLeft("AUTO", 5);
 
         }

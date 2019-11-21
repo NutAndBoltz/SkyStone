@@ -81,18 +81,18 @@ public class autoEncoderCode extends LinearOpMode {
         while (opModeIsActive()) {
 
             //Move servo arm up
-            foundationClaw.setPosition(0.5);
+            foundationClaw.setPosition(0);
 
             //Move forward to a little bit before the edge of the foundation
-            driveForward(36);
+            driveForward(16);
 
             //Strafe right to the middle of the foundation
             runtime.reset();
             while (opModeIsActive() && (runtime.seconds() < 1)) {
-                motorFL.setPower(-DRIVE_SPEED);
-                motorFR.setPower(-DRIVE_SPEED);
-                motorBR.setPower(DRIVE_SPEED);
-                motorBL.setPower(DRIVE_SPEED);
+                motorFL.setPower(1);
+                motorFR.setPower(1);
+                motorBR.setPower(-1);
+                motorBL.setPower(-1);
 
                 telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
                 telemetry.addData("Shaft Left",null);
@@ -102,6 +102,15 @@ public class autoEncoderCode extends LinearOpMode {
 
             //Move servo arm down to latch onto foundation squares
             foundationClaw.setPosition(1);
+
+            //delay
+            runtime.reset();
+
+            while (opModeIsActive() && (runtime.seconds() < 3.0)) {
+                stopRobot();
+                telemetry.addData("Motor", "Stopped");    //
+                telemetry.update();
+            }
 
             //Move backward into the depot (leave enough space for robot)
             driveBackward(10);
@@ -182,11 +191,11 @@ public class autoEncoderCode extends LinearOpMode {
             // Stop all motion;
             stopRobot();
 
-            // Turn off RUN_TO_POSITION
-            motorFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            motorFR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            motorBL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            motorBR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            // Turn off encoder mode
+            motorFL.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+            motorFR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+            motorBL.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+            motorBR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         }
     }
@@ -200,6 +209,12 @@ public class autoEncoderCode extends LinearOpMode {
 
         // Ensure that the opmode is still active
         if (opModeIsActive()) {
+            //turn on encoder mode
+            motorFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            motorFR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            motorBL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            motorBR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
 
             // Determine new target position, and pass to motor controller
             newmotorFLTarget = motorFL.getCurrentPosition() + (int)(inches * -COUNTS_PER_INCH);
@@ -242,11 +257,11 @@ public class autoEncoderCode extends LinearOpMode {
             // Stop all motion;
             stopRobot();
 
-            // Turn off RUN_TO_POSITION
-            motorFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            motorFR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            motorBL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            motorBR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            // Turn off encoder mode
+            motorFL.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+            motorFR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+            motorBL.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+            motorBR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         }
     }
