@@ -11,8 +11,7 @@ public class robotMain extends robotMovements {
         while (opModeIsActive()) {
 
 
-            moveForward("teleOp",0);
-
+            testRight();
 
         }
     }
