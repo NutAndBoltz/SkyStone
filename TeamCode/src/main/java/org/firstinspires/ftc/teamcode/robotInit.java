@@ -63,6 +63,7 @@ public class robotInit  implements robotVariable
         foundationClaw = hardwareMap.get(Servo.class, "foundationClaw");
         foundationClaw.setPosition(MID_SERVO);
 
+
     }
 }
 
