@@ -19,33 +19,70 @@ public class re_autoEncoderCode extends robotMovements{
         //place the claw at its start position so the robot satisfies measurement requirements
         robot.foundationClaw.setPosition(1);
 
-        // Wait for the game to start (driver presses PLAY)
-        waitForStart();
+//        // Wait for the game to start (driver presses PLAY)
+//        waitForStart();
 
         while (opModeIsActive())
         {
-            //Move servo arm up
-            robot.foundationClaw.setPosition(0);
+//            //Move servo arm up
+//            robot.foundationClaw.setPosition(0);
+//
+//            //Move forward to a little bit before the edge of the foundation
+//            moveBackward("AUTO", 8.8);
+//
+//            //Strafe left
+//            moveRight("AUTO", 5);
+//
+//            //Move servo arm down to latch onto foundation squares
+//            robot.foundationClaw.setPosition(0.6);
+//
+//            //delay
+//            runtime.reset();
+//            while (opModeIsActive() && (runtime.seconds() < 1.5)) {
+//                stopRobot();
+//                telemetry.addData("Motor", "Stopped");    //
+//                telemetry.update();
+//            }
+//
+//            //Move backward into the depot (leave enough space for robot)
+//            moveForward("AUTO", 9.5);
+//
+//            //delay
+//            runtime.reset();
+//            while (opModeIsActive() && (runtime.seconds() < 1)) {
+//                stopRobot();
+//                telemetry.addData("Motor", "Stopped");    //
+//                telemetry.update();
+//            }
+//
+//            //Move servo arm up
+//            robot.foundationClaw.setPosition(0);
+//
+//            //delay
+//            runtime.reset();
+//            while (opModeIsActive() && (runtime.seconds() < 1)) {
+//                stopRobot();
+//                telemetry.addData("Motor", "Stopped");    //
+//                telemetry.update();
+//            }
+//
+//            //Strafe right
+//            moveLeft("AUTO", 15);
 
             //Move forward to a little bit before the edge of the foundation
-            moveBackward("AUTO", 10);
+            moveBackward("AUTO", 1);
 
-            //Strafe left
-            moveRight("AUTO", 5);
-
-            //Move servo arm down to latch onto foundation squares
-            robot.foundationClaw.setPosition(1);
-
-            //Move backward into the depot (leave enough space for robot)
-            moveBackward("AUTO", 10);
-
-            //Move servo arm up
-            robot.foundationClaw.setPosition(0);
-
-            //Strafe right
-            moveLeft("AUTO", 5);
+            //delay
+            runtime.reset();
+            while (opModeIsActive() && (runtime.seconds() < 1)) {
+                stopRobot();
+                telemetry.addData("Motor", "Stopped");    //
+                telemetry.update();
+            }
+            stopRobot();
 
         }
+        stopRobot();
     }
 }
 
