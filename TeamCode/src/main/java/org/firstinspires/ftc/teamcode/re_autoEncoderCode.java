@@ -19,8 +19,7 @@ public class re_autoEncoderCode extends robotMovements{
         //place the claw at its start position so the robot satisfies measurement requirements
         robot.foundationClaw.setPosition(1);
 
-        while (opModeIsActive())
-        {
+
             //Move servo arm up
             robot.foundationClaw.setPosition(0);
 
@@ -78,7 +77,7 @@ public class re_autoEncoderCode extends robotMovements{
             }
             stopRobot();
 
-        }
+
     }
 }
 
