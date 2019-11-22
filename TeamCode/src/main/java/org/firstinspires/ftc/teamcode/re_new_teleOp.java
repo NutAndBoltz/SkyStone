@@ -24,10 +24,6 @@ public class re_new_teleOp extends robotMovements {
             robot.motorBL.setPower(motorBLspeed);
             robot.motorBR.setPower(motorBRspeed);
 
-
-
-
-
             telemetry.addData("Status", "Running");
             telemetry.update();
         }
