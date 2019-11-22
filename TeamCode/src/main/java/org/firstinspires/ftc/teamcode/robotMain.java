@@ -8,12 +8,10 @@ public class robotMain extends robotMovements {
     @Override
     public void runOpMode() throws InterruptedException {
         super.runOpMode();
-        while (opModeIsActive()) {
 
 
-            moveForward("teleOp",0);
+            reportTick();
 
 
-        }
     }
 }
