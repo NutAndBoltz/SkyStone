@@ -64,11 +64,9 @@ public class re_autoCodeRight extends robotMovements {
 
         // Wait for the game to start (driver presses PLAY)	
         waitForStart();
-        //drive forward to crater
-        while(opModeIsActive())
-        {
-            moveForward("AUTO",4);
-            moveRight("AUTO",6);
-        }
+        //drive forward to crate
+        moveForward("AUTO",4);
+        moveRight("AUTO",6);
+
     }
 }

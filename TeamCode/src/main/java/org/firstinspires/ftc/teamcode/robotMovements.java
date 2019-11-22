@@ -421,12 +421,22 @@ public class robotMovements extends LinearOpMode implements robotVariable
         }
     }
 
-    public void stopRobot ()
+    public void stopRobot()
     {
         robot.motorFL.setPower(0);
         robot.motorFR.setPower(0);
         robot.motorBL.setPower(0);
         robot.motorBR.setPower(0);
+    }
+    public void stopRobot(int seconds)
+    {
+        //delay
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < seconds)) {
+            stopRobot();
+            telemetry.addData("Motor", "Stopped");    //
+            telemetry.update();
+        }
     }
 
 

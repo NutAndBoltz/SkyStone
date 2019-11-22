@@ -45,36 +45,19 @@ public class re_autoEncoderCode extends robotMovements{
 
             //delay
             runtime.reset();
-            while (opModeIsActive() && (runtime.seconds() < 1)) {
-                stopRobot();
-                telemetry.addData("Motor", "Stopped");    //
-                telemetry.update();
-            }
+            stopRobot(1);
 
             //Move servo arm up
             robot.foundationClaw.setPosition(0);
 
-            //delay
-            runtime.reset();
-            while (opModeIsActive() && (runtime.seconds() < 1)) {
-                stopRobot();
-                telemetry.addData("Motor", "Stopped");    //
-                telemetry.update();
-            }
-
+            stopRobot(1);
             //Strafe right
             moveLeft("AUTO", 15);
 
             //Move forward to a little bit before the edge of the foundation
             moveBackward("AUTO", 1);
 
-            //delay
-            runtime.reset();
-            while (opModeIsActive() && (runtime.seconds() < 1)) {
-                stopRobot();
-                telemetry.addData("Motor", "Stopped");    //
-                telemetry.update();
-            }
+            stopRobot(1);
             stopRobot();
 
 
