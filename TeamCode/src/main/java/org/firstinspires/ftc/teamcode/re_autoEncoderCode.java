@@ -79,7 +79,6 @@ public class re_autoEncoderCode extends robotMovements{
             stopRobot();
 
         }
-        stopRobot();
     }
 }
 
