@@ -14,8 +14,8 @@ public class Re_CurrentV_GM extends robotMovements {
         {
             //Connecting to game controller elements
 
-
-
+            double G1leftStickX =-gamepad1.left_stick_x;
+            double G1rightStickX =-gamepad1.right_stick_x;
             double G1rightStickY = -gamepad1.right_stick_y;
             double G1leftStickY = -gamepad1.left_stick_y;
             float G1left_trigger = gamepad1.left_trigger;
@@ -43,11 +43,11 @@ public class Re_CurrentV_GM extends robotMovements {
                 robot.foundationClaw.setPosition(1);
             }else {
                 //strafe right
-                robot.motorFL.setPower(G1leftStickY);
-                robot.motorFR.setPower(G1leftStickY);
+                robot.motorFL.setPower(G1leftStickX);
+                robot.motorFR.setPower(G1leftStickX);
                 //strafe left
-                robot.motorBR.setPower(-G1rightStickY);
-                robot.motorBL.setPower(-G1rightStickY);
+                robot.motorBR.setPower(-G1rightStickX);
+                robot.motorBL.setPower(-G1rightStickX);
             }
 
             telemetry.addData("Status", "Running");
