@@ -4,6 +4,15 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 @TeleOp(name = "re_CurrentV_GM")
 public class re_new_teleOp extends robotMovements {
+    //Connecting to game controller elements
+    double G1rightStickY = -gamepad1.right_stick_y;
+    double G1rightStickX = -gamepad1.right_stick_x;
+    double G1leftStickY = -gamepad1.left_stick_y;
+    double G1leftStickX = -gamepad1.left_stick_x;
+    float G1left_trigger = gamepad1.left_trigger;
+    float G1right_trigger= gamepad1.right_trigger;
+    boolean G1buttonB = gamepad1.b;
+    float dpadThreshold = 0.2f;
     @Override
     public void runOpMode() throws InterruptedException {
         super.runOpMode();

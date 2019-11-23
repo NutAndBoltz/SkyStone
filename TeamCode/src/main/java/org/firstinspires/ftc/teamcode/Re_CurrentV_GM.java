@@ -9,10 +9,18 @@ public class Re_CurrentV_GM extends robotMovements {
         super.runOpMode();
         while(opModeIsActive())
         {
+            //Connecting to game controller elements
+            double G1rightStickY = -gamepad1.right_stick_y;
+            double G1rightStickX = -gamepad1.right_stick_x;
+            double G1leftStickY = -gamepad1.left_stick_y;
+            double G1leftStickX = -gamepad1.left_stick_x;
+            float G1left_trigger = gamepad1.left_trigger;
+            float G1right_trigger= gamepad1.right_trigger;
+            boolean G1buttonB = gamepad1.b;
+            float dpadThreshold = 0.2f;
 
 
-
-            if (G1left_trigger > 0.5) { //backwards
+            if (G1left_trigger> 0.5) { //backwards
                 moveBackward("TeleOP",0);
 
             } else if (G1right_trigger > 0.5){ //forwards
