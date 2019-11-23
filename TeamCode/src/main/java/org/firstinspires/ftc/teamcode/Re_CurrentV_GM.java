@@ -54,8 +54,8 @@ public class Re_CurrentV_GM extends robotMovements {
 
                 robot.motorFL.setPower(G1leftStickX);
                 robot.motorFR.setPower(-G1leftStickX);
-                robot.motorBR.setPower(-G1rightStickX);
-                robot.motorBL.setPower(G1rightStickX);
+                robot.motorBR.setPower(-G1leftStickX);
+                robot.motorBL.setPower(G1leftStickX);
             }
 
             telemetry.addData("Status", "Running");
