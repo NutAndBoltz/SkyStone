@@ -13,6 +13,8 @@ public class robotMovements extends LinearOpMode implements robotVariable
 
 
 
+
+
     //auto mode functions
     public void resetEncoder()
     {

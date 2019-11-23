@@ -16,6 +16,7 @@ public class robotInit  implements robotVariable
     public DcMotor motorBR;
     public Servo foundationClaw;
 
+
     /* local OpMode members. */
     HardwareMap hardwareMap           =  null;
     ElapsedTime runtime  = new ElapsedTime();
@@ -31,6 +32,8 @@ public class robotInit  implements robotVariable
     public void init(HardwareMap ahwMap) {
         // Save reference to Hardware map
         hardwareMap = ahwMap;
+
+
 
         // Define and Initialize Motors
 
