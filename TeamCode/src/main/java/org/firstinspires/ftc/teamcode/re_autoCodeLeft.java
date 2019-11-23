@@ -53,19 +53,19 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 public class re_autoCodeLeft extends robotMovements {
 
-
     @Override
     public void runOpMode() throws InterruptedException {
         super.runOpMode();
+
+        resetEncoder();
+        startEncoderMode();
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Status", "Ready to run");    //
         telemetry.update();
 
-        // Wait for the game to start (driver presses PLAY)
-        waitForStart();
         //drive forward to crater
         moveForward("AUTO",4);
-        moveLeft("AUTO",6);
+        moveLeft("AUTO",16);
     }
 }

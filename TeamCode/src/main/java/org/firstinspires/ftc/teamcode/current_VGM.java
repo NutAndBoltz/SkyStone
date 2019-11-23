@@ -1,12 +1,11 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
-@Disabled
+//@Disabled
 @TeleOp
 public class current_VGM extends LinearOpMode {
     private ElapsedTime     runtime = new ElapsedTime();
@@ -14,8 +13,6 @@ public class current_VGM extends LinearOpMode {
     DcMotor motorFR;
     DcMotor motorBL;
     DcMotor motorBR;
-    DcMotor linearSlide;
-    DcMotor linearRetract;
     Servo foundationClaw;
 
     static final double     FORWARD_SPEED = 0.05;

@@ -6,7 +6,7 @@ public interface robotVariable {
     double     teleOP_FORWARD_SPEED = 1;
     double     auto_FORWARD_SPEED = 0.4;
     double     STOP_SPEED = 0;
-    double MID_SERVO       =  0.5 ;
+    double     MID_SERVO  =  0.5 ;
 
 
     //from Encoder Sample
