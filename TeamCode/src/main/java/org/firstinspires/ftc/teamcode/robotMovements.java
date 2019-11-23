@@ -420,8 +420,8 @@ public class robotMovements extends LinearOpMode implements robotVariable
         {
             robot.motorFL.setPower(-DRIVE_SPEED);
             robot.motorFR.setPower(DRIVE_SPEED);
-            robot.motorBR.setPower(DRIVE_SPEED);
-            robot.motorBL.setPower(-DRIVE_SPEED);
+            robot.motorBL.setPower(DRIVE_SPEED);
+            robot.motorBR.setPower(-DRIVE_SPEED);
         }
     }
 

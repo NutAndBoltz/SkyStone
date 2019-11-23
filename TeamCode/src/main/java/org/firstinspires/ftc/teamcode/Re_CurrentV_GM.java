@@ -41,13 +41,21 @@ public class Re_CurrentV_GM extends robotMovements {
 
             } else if(gamepad1.a){ //move claw up
                 robot.foundationClaw.setPosition(1);
-            }else {
-                //strafe right
+            }
+            else if(G1rightStickX>0.3)
+            {
+                moveRight("Teleop",0);
+            }
+            else if(G1rightStickX<-0.3)
+            {
+                moveLeft("Teleop",0);
+            }
+            else {
+
                 robot.motorFL.setPower(G1leftStickX);
-                robot.motorFR.setPower(G1leftStickX);
-                //strafe left
+                robot.motorFR.setPower(-G1leftStickX);
                 robot.motorBR.setPower(-G1rightStickX);
-                robot.motorBL.setPower(-G1rightStickX);
+                robot.motorBL.setPower(G1rightStickX);
             }
 
             telemetry.addData("Status", "Running");
