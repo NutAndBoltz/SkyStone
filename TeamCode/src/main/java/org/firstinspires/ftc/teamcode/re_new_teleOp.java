@@ -83,51 +83,22 @@ public class re_new_teleOp extends robotMovements {
                 motorBLspeed=G1leftStickY;
                 motorBRspeed=G1leftStickY;
             }
-            if((G1leftStickX)>0.3)
+            if(G1leftStickX<0.3)
             {
                 moveLeft("Teleop",0);
             }
-            if(G1leftStickX<0.3)
+            if(G1leftStickX>0.3)
             {
                 moveRight("Teleop",0);
             }
-
-
-//            if(G1rightStickX!=0) {
-//                motorFLspeed = G1rightStickX;
-//                motorFRspeed = G1rightStickX;
-//                motorBLspeed = G1rightStickX;
-//                motorBRspeed = G1rightStickX;
-//                adjust();
-//
-//            }
-//            else
-//            {
-//                motorFLspeed=G1leftStickY;
-//                motorFRspeed=G1leftStickY;
-//                motorBLspeed=G1leftStickY;
-//                motorBRspeed=G1leftStickY;
-//                adjust();
-//
-//                motorFLspeed += G1leftStickX*2;
-//                motorFRspeed -= G1leftStickX*2;
-//                motorBLspeed -= G1leftStickX*2;
-//                motorBRspeed += G1leftStickX*2;
-//                adjust();
-//
-//                motorFLspeed +=G1leftStickY*0.5;
-//                motorFRspeed +=G1leftStickY*0.5;
-//                motorBLspeed +=G1leftStickY*0.5;
-//                motorBRspeed +=G1leftStickY*0.5;
-//                adjust();
-//            }
-
-
-
-
-
-
-
+            if(G1rightStickX>0.3)
+            {
+                turnright(G1rightStickX);
+            }
+            if(G1rightStickX<.3)
+            {
+                turnleft(G1rightStickX);
+            }
 
 
             robot.motorFL.setPower(motorFLspeed);
