@@ -1,9 +1,10 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 @Autonomous(name="autoCodeRight", group="auto")
-//@Disabled
+@Disabled
 
 public class autoCodeRight extends robotMovements {
 

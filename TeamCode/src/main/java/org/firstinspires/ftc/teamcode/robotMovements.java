@@ -1,4 +1,3 @@
-
 package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -6,12 +5,17 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class robotMovements extends LinearOpMode implements robotVariable
 {
-    robotInit robot =new robotInit();
+    robotInit robot = new robotInit();
     ElapsedTime runtime = new ElapsedTime();
-
-
-
-
+//    //Connecting to game controller elements
+//    double G1rightStickY = -gamepad1.right_stick_y;
+//    double G1rightStickX = -gamepad1.right_stick_x;
+//    double G1leftStickY = -gamepad1.left_stick_y;
+//    double G1leftStickX = -gamepad1.left_stick_x;
+//    float G1left_trigger = gamepad1.left_trigger;
+//    float G1right_trigger= gamepad1.right_trigger;
+//    boolean G1buttonB = gamepad1.b;
+//    float dpadThreshold = 0.2f;
 
     //auto mode functions
     public void resetEncoder()
@@ -43,9 +47,6 @@ public class robotMovements extends LinearOpMode implements robotVariable
         robot.motorFR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         robot.motorBR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
-
-
-
 
 
 

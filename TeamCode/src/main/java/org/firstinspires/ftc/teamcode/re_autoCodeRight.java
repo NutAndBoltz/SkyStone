@@ -49,24 +49,23 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 @Autonomous(name="re_autoCodeRight", group="auto")
-//@Disabled	
 
 public class re_autoCodeRight extends robotMovements {
-
 
     @Override
     public void runOpMode() throws InterruptedException {
         super.runOpMode();
 
+        resetEncoder();
+        startEncoderMode();
+
         // Send telemetry message to signify robot waiting;	
         telemetry.addData("Status", "Ready to run");    //	
         telemetry.update();
 
-        // Wait for the game to start (driver presses PLAY)	
-        waitForStart();
         //drive forward to crate
         moveForward("AUTO",4);
-        moveRight("AUTO",6);
+        moveRight("AUTO",16);
 
     }
 }
