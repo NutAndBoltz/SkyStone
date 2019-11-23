@@ -76,26 +76,26 @@ public class re_new_teleOp extends robotMovements {
                 //move claw up
                 robot.foundationClaw.setPosition(1);
             }
-            if(Math.abs(G1leftStickY)>0.3)
+            while(Math.abs(G1leftStickY)>0.3)
             {
                 motorFLspeed=G1leftStickY;
                 motorFRspeed=G1leftStickY;
                 motorBLspeed=G1leftStickY;
                 motorBRspeed=G1leftStickY;
             }
-            if(G1leftStickX<0.3)
+            while(G1leftStickX<-0.3)
             {
                 moveLeft("Teleop",0);
             }
-            if(G1leftStickX>0.3)
+            while(G1leftStickX>0.3)
             {
                 moveRight("Teleop",0);
             }
-            if(G1rightStickX>0.3)
+            while(G1rightStickX>0.3)
             {
                 turnright(G1rightStickX);
             }
-            if(G1rightStickX<.3)
+            while(G1rightStickX<-0.3)
             {
                 turnleft(G1rightStickX);
             }
