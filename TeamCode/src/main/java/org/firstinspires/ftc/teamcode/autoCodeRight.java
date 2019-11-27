@@ -10,6 +10,7 @@ public class autoCodeRight extends robotMovements {
 
     @Override
     public void runOpMode() throws InterruptedException {
+        setMode(AUTO);
         super.runOpMode();
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Status", "Resetting Encoders");
@@ -23,7 +24,7 @@ public class autoCodeRight extends robotMovements {
             stopRobot(1);
 
             //Strafe right
-            moveRight("AUTO", 15);
+            moveRight(15);
 
 
         }

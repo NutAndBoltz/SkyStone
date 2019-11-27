@@ -55,6 +55,7 @@ public class re_autoCodeLeft extends robotMovements {
 
     @Override
     public void runOpMode() throws InterruptedException {
+        setMode(AUTO);
         super.runOpMode();
 
         resetEncoder();
@@ -65,7 +66,7 @@ public class re_autoCodeLeft extends robotMovements {
         telemetry.update();
 
         //drive forward to crater
-        moveForward("AUTO",4);
-        moveLeft("AUTO",16);
+        moveForward(4);
+        moveLeft(16);
     }
 }

@@ -17,6 +17,7 @@ import static org.firstinspires.ftc.robotcore.external.navigation.AxesReference.
 public class robotMain extends VuforiaInit{
     @Override
     public void runOpMode() throws InterruptedException {
+        setMode(AUTO);
 
         VuforiaInit vuforiaInit =new VuforiaInit();
         super.runOpMode();

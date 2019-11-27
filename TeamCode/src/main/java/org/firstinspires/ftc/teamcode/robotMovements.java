@@ -53,8 +53,9 @@ public class robotMovements extends LinearOpMode implements robotVariable
 
 
     //movement functions
-    public void moveForward(String opMode, double inches)
+    public void moveForward(double inches)
     {
+        String opMode=mode;
 
         if(opMode.equals("AUTO"))
         {
@@ -118,15 +119,20 @@ public class robotMovements extends LinearOpMode implements robotVariable
         }
         else
         {
-            robot.motorBL.setPower(teleOP_FORWARD_SPEED);
-            robot.motorBR.setPower(teleOP_FORWARD_SPEED);
-            robot.motorFL.setPower(teleOP_FORWARD_SPEED);
-            robot.motorFR.setPower(teleOP_FORWARD_SPEED);
+            moveForward();
         }
     }
-
-    public void moveBackward(String opMode, double inches)
+    public void moveForward()
     {
+        robot.motorBL.setPower(teleOP_FORWARD_SPEED);
+        robot.motorBR.setPower(teleOP_FORWARD_SPEED);
+        robot.motorFL.setPower(teleOP_FORWARD_SPEED);
+        robot.motorFR.setPower(teleOP_FORWARD_SPEED);
+    }
+
+    public void moveBackward(double inches)
+    {
+        String opMode=mode;
 
         if(opMode.equals("AUTO"))
         {
@@ -190,11 +196,15 @@ public class robotMovements extends LinearOpMode implements robotVariable
         }
         else
         {
-            robot.motorBL.setPower(-teleOP_FORWARD_SPEED);
-            robot.motorBR.setPower(-teleOP_FORWARD_SPEED);
-            robot.motorFL.setPower(-teleOP_FORWARD_SPEED);
-            robot.motorFR.setPower(-teleOP_FORWARD_SPEED);
+            moveBackward();
         }
+    }
+    public void moveBackward()
+    {
+        robot.motorBL.setPower(-teleOP_FORWARD_SPEED);
+        robot.motorBR.setPower(-teleOP_FORWARD_SPEED);
+        robot.motorFL.setPower(-teleOP_FORWARD_SPEED);
+        robot.motorFR.setPower(-teleOP_FORWARD_SPEED);
     }
     void reportTick()
     {
@@ -221,8 +231,9 @@ public class robotMovements extends LinearOpMode implements robotVariable
 
     }
 
-    public void moveRight(String opMode,double inches)
+    public void moveRight(double inches)
     {
+        String opMode=mode;
         if(opMode.equals("AUTO"))
         {
             int newmotorFLTarget;
@@ -285,14 +296,19 @@ public class robotMovements extends LinearOpMode implements robotVariable
         }
         else
         {
-            robot.motorFL.setPower(DRIVE_SPEED);
-            robot.motorFR.setPower(-DRIVE_SPEED);
-            robot.motorBL.setPower(-DRIVE_SPEED);
-            robot.motorBR.setPower(DRIVE_SPEED);
+            moveRight();
         }
     }
-    public void moveLeft(String opMode,double inches)
+    public void moveRight()
     {
+        robot.motorFL.setPower(DRIVE_SPEED);
+        robot.motorFR.setPower(-DRIVE_SPEED);
+        robot.motorBL.setPower(-DRIVE_SPEED);
+        robot.motorBR.setPower(DRIVE_SPEED);
+    }
+    public void moveLeft(double inches)
+    {
+        String opMode=mode;
         if(opMode.equals("AUTO"))
         {
             int newmotorFLTarget;
@@ -355,11 +371,15 @@ public class robotMovements extends LinearOpMode implements robotVariable
         }
         else
         {
-            robot.motorFL.setPower(-DRIVE_SPEED);
-            robot.motorFR.setPower(DRIVE_SPEED);
-            robot.motorBL.setPower(DRIVE_SPEED);
-            robot.motorBR.setPower(-DRIVE_SPEED);
+            moveLeft();
         }
+    }
+    public void moveLeft()
+    {
+        robot.motorFL.setPower(-DRIVE_SPEED);
+        robot.motorFR.setPower(DRIVE_SPEED);
+        robot.motorBL.setPower(DRIVE_SPEED);
+        robot.motorBR.setPower(-DRIVE_SPEED);
     }
     public void turnleft(double speed)
     {
@@ -397,7 +417,18 @@ public class robotMovements extends LinearOpMode implements robotVariable
 
 
 
+    String mode ="";
 
+    public void setMode(int mode) {
+        if(mode==1)
+        {
+            this.mode="AUTO";
+        }
+        else
+        {
+            this.mode ="TELEOP";
+        }
+    }
 
     @Override
     public void runOpMode() throws InterruptedException {

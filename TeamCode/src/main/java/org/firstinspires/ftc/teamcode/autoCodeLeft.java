@@ -10,6 +10,7 @@ public class autoCodeLeft extends robotMovements {
 
     @Override
     public void runOpMode() throws InterruptedException {
+        setMode(AUTO);
         super.runOpMode();
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Status", "Resetting Encoders");
@@ -23,7 +24,7 @@ public class autoCodeLeft extends robotMovements {
             stopRobot(1);
 
             //Strafe left
-            moveLeft("AUTO", 15);
+            moveLeft(15);
 
 
         }

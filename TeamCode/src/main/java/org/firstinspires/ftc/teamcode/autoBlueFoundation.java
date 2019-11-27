@@ -8,6 +8,7 @@ public class autoBlueFoundation extends robotMovements{
 
     @Override
     public void runOpMode() throws InterruptedException {
+        setMode(AUTO);
         super.runOpMode();
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Status", "Resetting Encoders");
@@ -23,10 +24,10 @@ public class autoBlueFoundation extends robotMovements{
         robot.foundationClaw.setPosition(0);
 
         //Move forward to a little bit before the edge of the foundation
-        moveBackward("AUTO", 32);
+        moveBackward(32);
 
         //Strafe left
-        moveRight("AUTO", 16);
+        moveRight(16);
 
         //Move servo arm down to latch onto foundation squares
         robot.foundationClaw.setPosition(0.6);
@@ -35,7 +36,7 @@ public class autoBlueFoundation extends robotMovements{
         stopRobot(2);
 
         //Move backward into the depot (leave enough space for robot)
-        moveForward("AUTO", 36);
+        moveForward(36);
 
         //delay
         stopRobot(1);
@@ -47,7 +48,7 @@ public class autoBlueFoundation extends robotMovements{
         stopRobot(1);
 
         //Strafe Right
-        moveLeft("AUTO", 60);
+        moveLeft(60);
 
         stopRobot();
     }

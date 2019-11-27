@@ -9,6 +9,7 @@ public class Re_CurrentV_GM extends robotMovements {
 
     @Override
     public void runOpMode() throws InterruptedException {
+        setMode(TELEOP);
         super.runOpMode();
 
         while(opModeIsActive())
@@ -29,10 +30,10 @@ public class Re_CurrentV_GM extends robotMovements {
 
 
             if (G1left_trigger> 0.5) { //backwards
-                moveBackward("TeleOP",0);
+                moveBackward(0);
 
             } else if (G1right_trigger > 0.5){ //forwards
-                moveForward("TeleOp",0);
+                moveForward(0);
 
             } else if(gamepad1.y){ //move claw down
                 robot.foundationClaw.setPosition(0);
@@ -45,11 +46,11 @@ public class Re_CurrentV_GM extends robotMovements {
             }
             else if(G1rightStickX>0.3)
             {
-                moveRight("Teleop",0);
+                moveRight(0);
             }
             else if(G1rightStickX<-0.3)
             {
-                moveLeft("Teleop",0);
+                moveLeft(0);
             }
             else {
 

@@ -50,6 +50,7 @@ public class re_new_teleOp extends robotMovements {
     public void runOpMode() throws InterruptedException {
         super.runOpMode();
 
+        setMode(TELEOP);
 
         while(opModeIsActive())
         {
@@ -85,11 +86,11 @@ public class re_new_teleOp extends robotMovements {
             }
             while(G1leftStickX<-0.3)
             {
-                moveLeft("Teleop",0);
+                moveLeft(0);
             }
             while(G1leftStickX>0.3)
             {
-                moveRight("Teleop",0);
+                moveRight(0);
             }
             while(G1rightStickX>0.3)
             {

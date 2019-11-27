@@ -2,6 +2,8 @@ package org.firstinspires.ftc.teamcode;
 
 public interface robotVariable {
 
+    int AUTO=1;
+    int TELEOP=0;
 
     double     teleOP_FORWARD_SPEED = 1;
     double     auto_FORWARD_SPEED = 0.4;

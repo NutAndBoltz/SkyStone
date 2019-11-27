@@ -6,13 +6,14 @@ public class re_autoCode extends robotMovements  {
 
     @Override
     public void runOpMode() throws InterruptedException {
+        setMode(AUTO);
         super.runOpMode();
         robot.runtime.reset();
 
 
-        moveLeft("AUTO",5);
+        moveLeft(5);
         //drive backward to bridge
-        moveBackward("AUTO",10);
+        moveBackward(10);
         telemetry.addData("Path", "Complete");
         telemetry.update();
         sleep(1000);
