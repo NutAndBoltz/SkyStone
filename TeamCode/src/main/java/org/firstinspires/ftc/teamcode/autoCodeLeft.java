@@ -20,13 +20,7 @@ public class autoCodeLeft extends robotMovements {
 
         while (opModeIsActive())
         {
-            //delay
-            runtime.reset();
-            while (opModeIsActive() && (runtime.seconds() < 1)) {
-                stopRobot();
-                telemetry.addData("Motor", "Stopped");    //
-                telemetry.update();
-            }
+            stopRobot(1);
 
             //Strafe left
             moveLeft("AUTO", 15);
