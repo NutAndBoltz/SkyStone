@@ -6,8 +6,8 @@ public class re_autoCode extends robotMovements  {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        setMode(AUTO);
         super.runOpMode();
+        setMode(AUTO);
         robot.runtime.reset();
 
 

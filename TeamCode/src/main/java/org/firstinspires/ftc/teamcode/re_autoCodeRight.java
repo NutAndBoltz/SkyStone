@@ -54,8 +54,8 @@ public class re_autoCodeRight extends robotMovements {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        setMode(AUTO);
         super.runOpMode();
+        setMode(AUTO);
 
         resetEncoder();
         startEncoderMode();

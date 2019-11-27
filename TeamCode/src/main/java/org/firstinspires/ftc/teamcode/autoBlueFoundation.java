@@ -8,8 +8,9 @@ public class autoBlueFoundation extends robotMovements{
 
     @Override
     public void runOpMode() throws InterruptedException {
-        setMode(AUTO);
+
         super.runOpMode();
+        setMode(AUTO);
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Status", "Resetting Encoders");
         telemetry.update();

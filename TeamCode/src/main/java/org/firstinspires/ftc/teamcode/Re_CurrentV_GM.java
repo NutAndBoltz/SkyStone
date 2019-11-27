@@ -9,8 +9,8 @@ public class Re_CurrentV_GM extends robotMovements {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        setMode(TELEOP);
         super.runOpMode();
+        setMode(TELEOP);
 
         while(opModeIsActive())
         {

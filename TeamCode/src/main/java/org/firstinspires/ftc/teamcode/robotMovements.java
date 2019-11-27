@@ -55,7 +55,7 @@ public class robotMovements extends LinearOpMode implements robotVariable
     //movement functions
     public void moveForward(double inches)
     {
-        String opMode=mode;
+        String opMode=this.opMode;
 
         if(opMode.equals("AUTO"))
         {
@@ -132,7 +132,7 @@ public class robotMovements extends LinearOpMode implements robotVariable
 
     public void moveBackward(double inches)
     {
-        String opMode=mode;
+        String opMode=this.opMode;
 
         if(opMode.equals("AUTO"))
         {
@@ -233,7 +233,7 @@ public class robotMovements extends LinearOpMode implements robotVariable
 
     public void moveRight(double inches)
     {
-        String opMode=mode;
+        String opMode=this.opMode;
         if(opMode.equals("AUTO"))
         {
             int newmotorFLTarget;
@@ -308,7 +308,7 @@ public class robotMovements extends LinearOpMode implements robotVariable
     }
     public void moveLeft(double inches)
     {
-        String opMode=mode;
+        String opMode=this.opMode;
         if(opMode.equals("AUTO"))
         {
             int newmotorFLTarget;
@@ -417,16 +417,16 @@ public class robotMovements extends LinearOpMode implements robotVariable
 
 
 
-    String mode ="";
+    String opMode ="";
 
-    public void setMode(int mode) {
-        if(mode==1)
+    public void setMode(int opMode) {
+        if(opMode==1)
         {
-            this.mode="AUTO";
+            this.opMode="AUTO";
         }
         else
         {
-            this.mode ="TELEOP";
+            this.opMode ="TELEOP";
         }
     }
 
@@ -440,6 +440,7 @@ public class robotMovements extends LinearOpMode implements robotVariable
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
         // run until the end of the match (driver presses STOP)
+        this.opMode="";
     }
 
 }
