@@ -67,6 +67,11 @@ public class robotInit  implements robotVariable
         foundationClaw.setPosition(MID_SERVO);
 
 
+
+        //vuforia init
+
+
+
     }
 }
 
