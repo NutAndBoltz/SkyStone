@@ -46,6 +46,30 @@ public class re_new_teleOp extends robotMovements {
     }
 
 
+
+
+
+//    public void setAngle(double x, double y)
+//    {
+//        int TargetDegree=(int)Math.toDegrees(Math.atan2(y,x));
+//        TargetDegree+=90;//going Forward is 0 degree
+//        if(TargetDegree>360)
+//        {
+//            TargetDegree-=360;
+//        }
+//
+//
+//        int CurrentDegree =robot.gyro.getIntegratedZValue();
+//        while(TargetDegree==CurrentDegree)
+//        {
+//
+//
+//        }
+//
+//    }
+
+
+
     @Override
     public void runOpMode() throws InterruptedException {
         super.runOpMode();

@@ -1,6 +1,7 @@
 
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -16,6 +17,7 @@ public class robotInit  implements robotVariable
     public DcMotor motorBR;
     public Servo foundationClaw;
 
+    public ModernRoboticsI2cGyro   gyro    = null;
 
     /* local OpMode members. */
     HardwareMap hardwareMap           =  null;
@@ -34,6 +36,10 @@ public class robotInit  implements robotVariable
         hardwareMap = ahwMap;
 
 
+
+        //gyroSensor define and initialization
+
+        //gyro = (ModernRoboticsI2cGyro)hardwareMap.gyroSensor.get("gyro");
 
         // Define and Initialize Motors
 
@@ -68,7 +74,7 @@ public class robotInit  implements robotVariable
 
 
 
-        //vuforia init
+
 
 
 

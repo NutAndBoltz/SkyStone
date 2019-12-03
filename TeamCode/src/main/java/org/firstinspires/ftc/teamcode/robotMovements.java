@@ -435,6 +435,13 @@ public class robotMovements extends LinearOpMode implements robotVariable
 
         robot.init(hardwareMap);
 
+        //robot.gyro.calibrate();
+
+        // make sure the gyro is calibrated before continuing
+//        while (!isStopRequested() && robot.gyro.isCalibrating())  {
+//            sleep(50);
+//        }
+
         telemetry.addData("Status", "Initialized");
         telemetry.update();
         // Wait for the game to start (driver presses PLAY)
