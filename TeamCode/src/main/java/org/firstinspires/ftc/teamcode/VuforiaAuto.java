@@ -85,8 +85,6 @@ import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocaliz
 @Disabled
 public class VuforiaAuto extends robotMovements {
 
-
-
     // Class Members
      OpenGLMatrix lastLocation = null;
      VuforiaLocalizer vuforia = null;

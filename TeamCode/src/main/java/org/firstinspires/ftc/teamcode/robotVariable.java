@@ -6,8 +6,8 @@ import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocaliz
 
 public interface robotVariable {
 
-    int AUTO=1;
-    int TELEOP=0;
+    int AUTO = 1;
+    int TELEOP = 0;
 
     double     teleOP_FORWARD_SPEED = 1;
     double     auto_FORWARD_SPEED = 0.4;
