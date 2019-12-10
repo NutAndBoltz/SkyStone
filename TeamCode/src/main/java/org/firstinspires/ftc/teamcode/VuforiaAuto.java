@@ -257,7 +257,8 @@ public class VuforiaAuto extends robotMovements {
         for (VuforiaTrackable trackable : allTrackables) {
             if (((VuforiaTrackableDefaultListener) trackable.getListener()).isVisible()) {
                 telemetry.addData("Visible Target", trackable.getName());
-                vuforiaData.setTrackableName("name");
+                vuforiaData.setTrackableName(trackable.getName());
+                //here
                 targetVisible = true;
 
                 // getUpdatedRobotLocation() will return null if no new information is available since
