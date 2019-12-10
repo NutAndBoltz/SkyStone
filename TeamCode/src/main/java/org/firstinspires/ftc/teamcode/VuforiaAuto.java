@@ -29,8 +29,7 @@
 
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
@@ -81,8 +80,8 @@ import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocaliz
  */
 
 
-@Autonomous(name="SKYSTONE Vuforia Nav", group ="auto")
-@Disabled
+@TeleOp(name="SKYSTONE Vuforia Nav", group ="teleOp")
+
 public class VuforiaAuto extends robotMovements {
 
     // Class Members
@@ -248,18 +247,22 @@ public class VuforiaAuto extends robotMovements {
         }
     }
 
-    public void Navigate()
-    {
+
+    public VuforiaData Navigate() {
+        VuforiaData vuforiaData = new VuforiaData();
+
+
         // check all the trackable targets to see which one (if any) is visible.
         targetVisible = false;
         for (VuforiaTrackable trackable : allTrackables) {
-            if (((VuforiaTrackableDefaultListener)trackable.getListener()).isVisible()) {
+            if (((VuforiaTrackableDefaultListener) trackable.getListener()).isVisible()) {
                 telemetry.addData("Visible Target", trackable.getName());
+                vuforiaData.setTrackableName("name");
                 targetVisible = true;
 
                 // getUpdatedRobotLocation() will return null if no new information is available since
                 // the last time that call was made, or if the trackable is not currently visible.
-                OpenGLMatrix robotLocationTransform = ((VuforiaTrackableDefaultListener)trackable.getListener()).getUpdatedRobotLocation();
+                OpenGLMatrix robotLocationTransform = ((VuforiaTrackableDefaultListener) trackable.getListener()).getUpdatedRobotLocation();
                 if (robotLocationTransform != null) {
                     lastLocation = robotLocationTransform;
                 }
@@ -277,12 +280,18 @@ public class VuforiaAuto extends robotMovements {
             // express the rotation of the robot in degrees.
             Orientation rotation = Orientation.getOrientation(lastLocation, EXTRINSIC, XYZ, DEGREES);
             telemetry.addData("Rot (deg)", "{Roll, Pitch, Heading} = %.0f, %.0f, %.0f", rotation.firstAngle, rotation.secondAngle, rotation.thirdAngle);
-        }
-        else {
+        } else {
             telemetry.addData("Visible Target", "none");
         }
         telemetry.update();
+        return vuforiaData;
+
     }
+
+
+    int UNKNOWNDISTANCE=10;
+    int UNKNOWNSPEED=1;
+    int UNKNOWNANGLE=90;
 
     @Override public void runOpMode() throws InterruptedException {
         super.runOpMode();
@@ -294,7 +303,7 @@ public class VuforiaAuto extends robotMovements {
          */
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
-        // VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters();
+        //parameters = new VuforiaLocalizer.Parameters();
         parameters.vuforiaLicenseKey = VUFORIA_KEY;
         parameters.cameraDirection   = CAMERA_CHOICE;
         //  Instantiate the Vuforia engine
@@ -304,6 +313,17 @@ public class VuforiaAuto extends robotMovements {
         targetsSkyStone = this.vuforia.loadTrackablesFromAsset("Skystone");
 
         VuforiaInit();
+
+        // Send telemetry message to signify robot waiting;
+        telemetry.addData("Status", "Resetting Encoders");
+        telemetry.update();
+
+
+        resetEncoder();
+        startEncoderMode();
+
+        //place the claw at its start position so the robot satisfies measurement requirements
+        robot.foundationClaw.setPosition(1);
 
         waitForStart();
         runtime.reset();
@@ -316,11 +336,56 @@ public class VuforiaAuto extends robotMovements {
 
 
 
-        while (!isStopRequested()||getRuntime()<27)
+        while (!isStopRequested()||runtime.seconds()<27)
         {
+
+            //move foundation
+            //Move servo arm up
+            robot.foundationClaw.setPosition(0);
+            //Move forward to a little bit before the edge of the foundation
+            moveBackward(32);
+            //Strafe left
+            moveRight(16);
+            //Move servo arm down to latch onto foundation squares
+            robot.foundationClaw.setPosition(0.6);
+            //delay
+            stopRobot(2);
+            //Move backward into the depot (leave enough space for robot)
+            moveForward(36);
+            //delay
+            stopRobot(1);
+            //Move servo arm up
+            robot.foundationClaw.setPosition(0);
+
+
+            //turn right
+            turnright(UNKNOWNSPEED);
+            //Move forward to stones
+            moveForward(UNKNOWNDISTANCE);
+            //Turn left so camera is facing stones
+            turnleft(UNKNOWNSPEED);
+            int UNKOWN_DISTANCE_SENSOR_VALUE=0;
+            while(UNKOWN_DISTANCE_SENSOR_VALUE<3)   //While there are stones
+            {
+                // Move forward to stones
+                moveForward(UNKNOWNDISTANCE);
+
+            }
+            //Scan for skystone
             Navigate();
 
+            //If skystone: pick it up, turn left, drive forward to foundation, drop skystone
+            //Else: continue
+            //Drive backward to next stone
+            //Turn right to face stone
+
         }
+        //then, park
+        //find placement on field
+        //find directions to midfield line
+        // move there
+
+        stopRobot();
 
 
 
