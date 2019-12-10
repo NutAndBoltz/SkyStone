@@ -199,9 +199,7 @@ public class autoBlueFoundation extends robotMovements{
             if (((VuforiaTrackableDefaultListener) trackable.getListener()).isVisible()) {
                 telemetry.addData("Visible Target", trackable.getName());
                 vuforiaData.setTrackableName(trackable.getName());
-                //here
                 targetVisible = true;
-
                 // getUpdatedRobotLocation() will return null if no new information is available since
                 // the last time that call was made, or if the trackable is not currently visible.
                 OpenGLMatrix robotLocationTransform = ((VuforiaTrackableDefaultListener) trackable.getListener()).getUpdatedRobotLocation();
@@ -218,12 +216,21 @@ public class autoBlueFoundation extends robotMovements{
             VectorF translation = lastLocation.getTranslation();
             telemetry.addData("Pos (in)", "{X, Y, Z} = %.1f, %.1f, %.1f",
                     translation.get(0) / mmPerInch, translation.get(1) / mmPerInch, translation.get(2) / mmPerInch);
+            vuforiaData.setPosX(translation.get(0) / mmPerInch);
+            vuforiaData.setPosY(translation.get(1) / mmPerInch);
+            vuforiaData.setPosZ(translation.get(2) / mmPerInch);
+
 
             // express the rotation of the robot in degrees.
             Orientation rotation = Orientation.getOrientation(lastLocation, EXTRINSIC, XYZ, DEGREES);
             telemetry.addData("Rot (deg)", "{Roll, Pitch, Heading} = %.0f, %.0f, %.0f", rotation.firstAngle, rotation.secondAngle, rotation.thirdAngle);
-        } else {
+            vuforiaData.setFirstAngle(rotation.firstAngle);
+            vuforiaData.setSecondAngle(rotation.secondAngle);
+            vuforiaData.setThirdAngle(rotation.thirdAngle);
+        }
+        else {
             telemetry.addData("Visible Target", "none");
+            vuforiaData.setTrackableName("none");
         }
         telemetry.update();
         return vuforiaData;
