@@ -402,6 +402,22 @@ public class robotMovements extends LinearOpMode implements robotVariable
             telemetry.update();
         }
     }
+    public void grabStone()
+    {
+        // TODO: 2019-12-11 add servo, and make method
+    }
+    public void releaseStone()
+    {
+        // TODO: 2019-12-11 add servo, and make method
+    }
+    public void lifterUp()
+    {
+        // TODO: 2019-12-11 add servo, and make method
+    }
+    public void lifterDown()
+    {
+        // TODO: 2019-12-11 add servo, and make method
+    }
 
 
 

@@ -29,6 +29,7 @@
 
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
@@ -80,8 +81,8 @@ import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocaliz
  */
 
 
-@TeleOp(name="SKYSTONE Vuforia Nav", group ="teleOp")
-
+@TeleOp(name="VuforiaAuo", group ="auto")
+@Disabled
 public class VuforiaAuto extends robotMovements {
 
     // Class Members
@@ -98,6 +99,17 @@ public class VuforiaAuto extends robotMovements {
     List<VuforiaTrackable> allTrackables;
     OpenGLMatrix robotFromCamera;
     VuforiaLocalizer.Parameters parameters;
+
+    //current coodination of robot to use in vuforia
+    /**
+     * coordination system in Vuforia: 0,0,0 => center of field
+     * unit: mm, but we can get inch data and multiply mmperInch when using it
+     * todo figure out orientation of coordinate
+     * todo get Initial Robot position (IMPORTANT: NEED SPECIFICALLY SINCE IT MIGHT MESS UP WHOLE MOVEMENTS IF NOT ACCURATE)
+     *
+     */
+
+    int CurrentX=0,CurrentY=0;
 
 
 
@@ -131,6 +143,7 @@ public class VuforiaAuto extends robotMovements {
         rear1.setName("Rear Perimeter 1");
         VuforiaTrackable rear2 = targetsSkyStone.get(12);
         rear2.setName("Rear Perimeter 2");
+
 
         // Set the position of the Stone Target.  Since it's not fixed in position, assume it's at the field origin.
         // Rotated it to to face forward, and raised it to sit on the ground correctly.
@@ -248,7 +261,8 @@ public class VuforiaAuto extends robotMovements {
     }
 
 
-    public VuforiaData Navigate() {
+    public VuforiaData Navigate()
+    {
         VuforiaData vuforiaData = new VuforiaData();
 
 
@@ -352,14 +366,21 @@ public class VuforiaAuto extends robotMovements {
             robot.foundationClaw.setPosition(0);
             //Move forward to a little bit before the edge of the foundation
             moveBackward(32);
+
+            CurrentY-=32; // TODO: 2019-12-11 figure out exact position
+
             //Strafe left
-            moveRight(16);
+            moveLeft(16);
+
+            CurrentX+=16; // TODO: 2019-12-11 figure out exact position
+
             //Move servo arm down to latch onto foundation squares
             robot.foundationClaw.setPosition(0.6);
             //delay
             stopRobot(2);
             //Move backward into the depot (leave enough space for robot)
             moveForward(36);
+            CurrentY+=36;// TODO: 2019-12-11 figure out exact position
             //delay
             stopRobot(1);
             //Move servo arm up
@@ -370,6 +391,7 @@ public class VuforiaAuto extends robotMovements {
             turnright(UNKNOWNSPEED);
             //Move forward to stones
             moveForward(UNKNOWNDISTANCE);
+            CurrentX+=UNKNOWNDISTANCE;// TODO: 2019-12-11 figure out exact position
             //Turn left so camera is facing stones
             turnleft(UNKNOWNSPEED);
             int UNKOWN_DISTANCE_SENSOR_VALUE=0;
@@ -377,15 +399,53 @@ public class VuforiaAuto extends robotMovements {
             {
                 // Move forward to stones
                 moveForward(UNKNOWNDISTANCE);
+                CurrentY+=UNKNOWNDISTANCE;// TODO: 2019-12-11 figure out exact position
 
             }
-            //Scan for skystone
-            Navigate();
 
-            //If skystone: pick it up, turn left, drive forward to foundation, drop skystone
-            //Else: continue
-            //Drive backward to next stone
-            //Turn right to face stone
+            //First SkyStone
+            while(Navigate().getTrackableName().equals("Stone Target")&& Navigate().getThirdAngle()==0)
+            {
+                moveRight(UNKNOWNDISTANCE);
+                // TODO: 2019-12-11 figure out exact position
+            }
+            VuforiaTrackable SkyStone1 = targetsSkyStone.get(13);
+            SkyStone1.setName("SkyStone1");
+            SkyStone1.setLocation(OpenGLMatrix
+                    .translation(CurrentX, CurrentY, stoneZ) // TODO: 2019-12-11 figure out exact position comparing with the other vuforia objects
+                    .multiplied(Orientation.getRotationMatrix(EXTRINSIC, XYZ, DEGREES, 90, 0, -90)));//this is good
+
+            //Second SkyStone
+            while(Navigate().getTrackableName().equals("Stone Target")&& Navigate().getThirdAngle()==0)
+            {
+                moveRight(UNKNOWNDISTANCE);
+                // TODO: 2019-12-11 figure out exact position
+            }
+            /*
+            VuforiaTrackable SkyStone2 = targetsSkyStone.get(13);
+            SkyStone2.setName("SkyStone2");
+            SkyStone2.setLocation(OpenGLMatrix
+                    .translation(CurrentX, CurrentY, stoneZ) // TODO: 2019-12-11 figure out exact position comparing with the other vuforia objects
+                    .multiplied(Orientation.getRotationMatrix(EXTRINSIC, XYZ, DEGREES, 90, 0, -90)));//this is good
+
+             */
+            // TODO: 2019-12-11 No need to save 2nd, since we'll grab it right away
+
+            grabStone();
+            //go to Foundation, whereever
+            releaseStone();
+            //go back to first SkyStone
+
+            grabStone();    //first Stone grabbed
+            //go to Foundation, whereever
+            releaseStone();
+            //go back to first SkyStone
+
+
+
+
+
+
 
         }
         //then, park

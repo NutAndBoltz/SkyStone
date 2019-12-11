@@ -63,6 +63,7 @@ public interface robotVariable {
      float stoneZ = 2.00f * mmPerInch;
 
     // Constants for the center support targets
+    //XYZ all 0 ==> Center of Field
      float bridgeZ = 6.42f * mmPerInch;
      float bridgeY = 23 * mmPerInch;
      float bridgeX = 5.18f * mmPerInch;
@@ -77,8 +78,11 @@ public interface robotVariable {
 
     // Next, translate the camera lens to where it is on the robot.
     // In this example, it is centered (left to right), but forward of the middle of the robot, and above ground level.
-    final float CAMERA_FORWARD_DISPLACEMENT  = 4.0f * mmPerInch;   // eg: Camera is 4 Inches in front of robot center
-    final float CAMERA_VERTICAL_DISPLACEMENT = 8.0f * mmPerInch;   // eg: Camera is 8 Inches above ground
-    final float CAMERA_LEFT_DISPLACEMENT     = 0;     // eg: Camera is ON the robot's center line
+     float CAMERA_FORWARD_DISPLACEMENT  = 4.0f * mmPerInch;   // eg: Camera is 4 Inches in front of robot center
+     float CAMERA_VERTICAL_DISPLACEMENT = 8.0f * mmPerInch;   // eg: Camera is 8 Inches above ground
+     float CAMERA_LEFT_DISPLACEMENT     = 0;     // eg: Camera is ON the robot's center line
+    
+
+    
 
 }
