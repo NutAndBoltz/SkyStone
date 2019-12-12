@@ -29,7 +29,6 @@
 
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
@@ -82,7 +81,7 @@ import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocaliz
 
 
 @TeleOp(name="VuforiaAuo", group ="auto")
-@Disabled
+
 public class VuforiaAuto extends robotMovements {
 
     // Class Members
@@ -109,10 +108,12 @@ public class VuforiaAuto extends robotMovements {
      *
      */
 
-    int CurrentX=0,CurrentY=0;
+
+    int CurrentX=0,CurrentY=0; //Initial position: 60cm from left wall, wheel touching the back wall as well
 
 
 
+    VuforiaData vuforiaData;
 
     public void VuforiaInit()
     {
@@ -263,7 +264,7 @@ public class VuforiaAuto extends robotMovements {
 
     public VuforiaData Navigate()
     {
-        VuforiaData vuforiaData = new VuforiaData();
+
 
 
         // check all the trackable targets to see which one (if any) is visible.
@@ -278,6 +279,7 @@ public class VuforiaAuto extends robotMovements {
                 OpenGLMatrix robotLocationTransform = ((VuforiaTrackableDefaultListener) trackable.getListener()).getUpdatedRobotLocation();
                 if (robotLocationTransform != null) {
                     lastLocation = robotLocationTransform;
+                    vuforiaData.setCurrentposition(lastLocation);
                 }
                 break;
             }
@@ -360,14 +362,16 @@ public class VuforiaAuto extends robotMovements {
 
         while (!isStopRequested()||runtime.seconds()<27)
         {
-
+            vuforiaData = Navigate();
             //move foundation
             //Move servo arm up
             robot.foundationClaw.setPosition(0);
             //Move forward to a little bit before the edge of the foundation
             moveBackward(32);
+            //VuforiaTrackableDefaultListener vuforiaTrackableDefaultListener =new VuforiaTrackableDefaultListener();
 
-            CurrentY-=32; // TODO: 2019-12-11 figure out exact position
+
+            vuforiaData.getCurrentposition();
 
             //Strafe left
             moveLeft(16);
@@ -404,7 +408,7 @@ public class VuforiaAuto extends robotMovements {
             }
 
             //First SkyStone
-            while(Navigate().getTrackableName().equals("Stone Target")&& Navigate().getThirdAngle()==0)
+            while(vuforiaData.getTrackableName().equals("Stone Target") && (vuforiaData.getThirdAngle() == 0))
             {
                 moveRight(UNKNOWNDISTANCE);
                 // TODO: 2019-12-11 figure out exact position
@@ -416,7 +420,7 @@ public class VuforiaAuto extends robotMovements {
                     .multiplied(Orientation.getRotationMatrix(EXTRINSIC, XYZ, DEGREES, 90, 0, -90)));//this is good
 
             //Second SkyStone
-            while(Navigate().getTrackableName().equals("Stone Target")&& Navigate().getThirdAngle()==0)
+            while(vuforiaData.getTrackableName().equals("Stone Target")&& vuforiaData.getThirdAngle()==0)
             {
                 moveRight(UNKNOWNDISTANCE);
                 // TODO: 2019-12-11 figure out exact position

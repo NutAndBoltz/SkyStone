@@ -1,11 +1,23 @@
 package org.firstinspires.ftc.teamcode;
 
+import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
+
 public class VuforiaData
 {
     String trackableName="";
     double posX=0,posY=0,posZ=0;
     double firstAngle=0,secondAngle=0,thirdAngle=0;
-    void VuforiaData(String trackableName, double posX,double posY, double posZ, double firstAngle, double secondAngle, double thirdAngle)
+    OpenGLMatrix currentposition;
+
+    public OpenGLMatrix getCurrentposition() {
+        return currentposition;
+    }
+
+    public void setCurrentposition(OpenGLMatrix currentposition) {
+        this.currentposition = currentposition;
+    }
+
+    void VuforiaData(String trackableName, double posX, double posY, double posZ, double firstAngle, double secondAngle, double thirdAngle,OpenGLMatrix currentposition)
     {
         this.firstAngle=firstAngle;
         this.secondAngle=secondAngle;
@@ -14,6 +26,7 @@ public class VuforiaData
         this.posY=posY;
         this.posZ=posZ;
         this.trackableName=trackableName;
+        this.currentposition=currentposition;
     }
 
     public String getTrackableName() {
