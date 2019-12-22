@@ -7,6 +7,7 @@ public class robotMovements extends LinearOpMode implements robotVariable
 {
     robotInit robot = new robotInit();
     ElapsedTime runtime = new ElapsedTime();
+    VuforiaData vuforiaData =new VuforiaData();
 
     //auto mode functions
     public void resetEncoder()
