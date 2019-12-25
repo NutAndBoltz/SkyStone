@@ -5,6 +5,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class robotMovements extends LinearOpMode implements robotVariable
 {
+    int cameraMonitorViewId=0; //used for Vuforia_Thread
+
     robotInit robot = new robotInit();
     ElapsedTime runtime = new ElapsedTime();
     VuforiaData vuforiaData =new VuforiaData();
@@ -435,6 +437,7 @@ public class robotMovements extends LinearOpMode implements robotVariable
             this.opMode ="TELEOP";
         }
     }
+
 
     @Override
     public void runOpMode() throws InterruptedException {

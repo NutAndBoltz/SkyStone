@@ -11,7 +11,9 @@ public class VuforiaData
     OpenGLMatrix currentposition;
 
 
-    void VuforiaData(String trackableName, double posX, double posY, double posZ, double firstAngle, double secondAngle, double thirdAngle,OpenGLMatrix currentposition)
+
+
+    void VuforiaData(String trackableName, double posX, double posY, double posZ, double firstAngle, double secondAngle, double thirdAngle, OpenGLMatrix currentposition)
     {
         this.firstAngle=firstAngle;
         this.secondAngle=secondAngle;
