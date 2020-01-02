@@ -116,10 +116,10 @@ public class robotMovements extends LinearOpMode implements robotVariable
     }
     public void moveForward()
     {
-        robot.motorBL.setPower(teleOP_FORWARD_SPEED);
-        robot.motorBR.setPower(teleOP_FORWARD_SPEED);
-        robot.motorFL.setPower(teleOP_FORWARD_SPEED);
-        robot.motorFR.setPower(teleOP_FORWARD_SPEED);
+
+        robot.motorFL.setPower(teleOP_FORWARD_SPEED);       robot.motorFR.setPower(teleOP_FORWARD_SPEED);
+        robot.motorBL.setPower(teleOP_FORWARD_SPEED);       robot.motorBR.setPower(teleOP_FORWARD_SPEED);
+
     }
 
     public void moveBackward(double inches)
@@ -178,10 +178,10 @@ public class robotMovements extends LinearOpMode implements robotVariable
                 stopRobot();
 
                 // Turn off RUN_TO_POSITION
-                robot.motorFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-                robot.motorFR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-                robot.motorBL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-                robot.motorBR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                robot.motorFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);       robot.motorFR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+                robot.motorBL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);       robot.motorBR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
 
             }
 
@@ -193,10 +193,11 @@ public class robotMovements extends LinearOpMode implements robotVariable
     }
     public void moveBackward()
     {
-        robot.motorBL.setPower(-teleOP_FORWARD_SPEED);
-        robot.motorBR.setPower(-teleOP_FORWARD_SPEED);
-        robot.motorFL.setPower(-teleOP_FORWARD_SPEED);
-        robot.motorFR.setPower(-teleOP_FORWARD_SPEED);
+
+        robot.motorFL.setPower(-teleOP_FORWARD_SPEED);      robot.motorFR.setPower(-teleOP_FORWARD_SPEED);
+
+        robot.motorBL.setPower(-teleOP_FORWARD_SPEED);      robot.motorBR.setPower(-teleOP_FORWARD_SPEED);
+
     }
     void reportTick()
     {
@@ -293,10 +294,10 @@ public class robotMovements extends LinearOpMode implements robotVariable
     }
     public void moveRight()
     {
-        robot.motorFL.setPower(DRIVE_SPEED);
-        robot.motorFR.setPower(-DRIVE_SPEED);
-        robot.motorBL.setPower(-DRIVE_SPEED);
-        robot.motorBR.setPower(DRIVE_SPEED);
+        robot.motorFL.setPower(teleOP_FORWARD_SPEED);       robot.motorFR.setPower(-teleOP_FORWARD_SPEED);
+
+        robot.motorBL.setPower(-teleOP_FORWARD_SPEED);      robot.motorBR.setPower(teleOP_FORWARD_SPEED);
+
     }
     public void moveLeft(double inches)
     {
@@ -368,24 +369,22 @@ public class robotMovements extends LinearOpMode implements robotVariable
     }
     public void moveLeft()
     {
-        robot.motorFL.setPower(-DRIVE_SPEED);
-        robot.motorFR.setPower(DRIVE_SPEED);
-        robot.motorBL.setPower(DRIVE_SPEED);
-        robot.motorBR.setPower(-DRIVE_SPEED);
+        robot.motorFL.setPower(-teleOP_FORWARD_SPEED);      robot.motorFR.setPower(teleOP_FORWARD_SPEED);
+
+        robot.motorBL.setPower(teleOP_FORWARD_SPEED);       robot.motorBR.setPower(-teleOP_FORWARD_SPEED);
+
     }
     public void turnleft(double speed)
     {
-        robot.motorFL.setPower(-speed);
-        robot.motorFR.setPower(speed);
-        robot.motorBL.setPower(-speed);
-        robot.motorBR.setPower(speed);
+
+        robot.motorFL.setPower(-speed);         robot.motorFR.setPower(speed);
+        robot.motorBL.setPower(-speed);         robot.motorBR.setPower(speed);
     }
     public void turnright(double speed)
     {
-        robot.motorFL.setPower(speed);
-        robot.motorFR.setPower(-speed);
-        robot.motorBL.setPower(speed);
-        robot.motorBR.setPower(-speed);
+
+        robot.motorFL.setPower(speed);          robot.motorFR.setPower(-speed);
+        robot.motorBL.setPower(speed);          robot.motorBR.setPower(-speed);
     }
 
     public void stopRobot()

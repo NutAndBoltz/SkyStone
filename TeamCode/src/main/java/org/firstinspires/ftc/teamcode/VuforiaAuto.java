@@ -88,6 +88,8 @@ public class VuforiaAuto extends robotMovements {
     int CurrentX=0,CurrentY=0; //Initial position: 60cm from left wall, wheel touching the back wall as well
 
     Vuforia_Thread vuforia_thread;
+    Thread thread;
+    Boolean STOP_VUFORIA_THREAD=false;
 
 
 
@@ -144,6 +146,15 @@ public class VuforiaAuto extends robotMovements {
         //place the claw at its start position so the robot satisfies measurement requirements
         robot.foundationClaw.setPosition(1);
 
+        Log.i("thread", "before thread initialization");
+        vuforia_thread = new Vuforia_Thread();
+        Log.i("thread", "Vuforia_Thread vuforia_thread =new Vuforia_Thread();");
+        thread = new Thread(vuforia_thread);
+        Log.i("thread", "Thread thread =new Thread(vuforia_thread);");
+        thread.start();
+        Log.i("thread", "thread.start();");
+
+
         waitForStart();
         while(!isStopRequested()) {
 
@@ -155,87 +166,82 @@ public class VuforiaAuto extends robotMovements {
              * this will scan for images in any time and update vuforiaData at robotMovement.class in realtime
              */
 
-            Log.i("thread", "before thread initialization");
-            vuforia_thread = new Vuforia_Thread();
-            Log.i("thread", "Vuforia_Thread vuforia_thread =new Vuforia_Thread();");
-            Thread thread = new Thread(vuforia_thread);
-            Log.i("thread", "Thread thread =new Thread(vuforia_thread);");
-            thread.start();
-            Log.i("thread", "thread.start();");
 
 
 
-            while (runtime.seconds() < 27) {
-
-
-                moveFoundation();
-
-                // TODO: 2019-12-21 adjust with newly added vuforia thread
-                //turn right
-                turnright(UNKNOWNSPEED);
-                //Move forward to stones
-                moveForward(UNKNOWNDISTANCE);
-                CurrentX += UNKNOWNDISTANCE;// TODO: 2019-12-11 figure out exact position
-                //Turn left so camera is facing stones
-                turnleft(UNKNOWNSPEED);
-                int UNKOWN_DISTANCE_SENSOR_VALUE = 0;
-                while (UNKOWN_DISTANCE_SENSOR_VALUE < 3)   //While there are stones
-                {
-                    // Move forward to stones
-                    moveForward(UNKNOWNDISTANCE);
-                    CurrentY += UNKNOWNDISTANCE;// TODO: 2019-12-11 figure out exact position
-
-                }
-
-                //First SkyStone
-//            while(vuforiaData.getTrackableName().equals("Stone Target") && (vuforiaData.getThirdAngle() == 0))
-//            {
-//                moveRight(UNKNOWNDISTANCE);
-//                // TODO: 2019-12-11 figure out exact position
-//            }
-//            VuforiaTrackable SkyStone1 = targetsSkyStone.get(13);
-//            SkyStone1.setName("SkyStone1");
-//            SkyStone1.setLocation(OpenGLMatrix
+//            while (runtime.seconds() < 27) {
+//
+//
+//                moveFoundation();
+//
+//                // TODO: 2019-12-21 adjust with newly added vuforia thread
+//                //turn right
+//                turnright(UNKNOWNSPEED);
+//                //Move forward to stones
+//                moveForward(UNKNOWNDISTANCE);
+//                CurrentX += UNKNOWNDISTANCE;// TODO: 2019-12-11 figure out exact position
+//                //Turn left so camera is facing stones
+//                turnleft(UNKNOWNSPEED);
+//                int UNKOWN_DISTANCE_SENSOR_VALUE = 0;
+//                while (UNKOWN_DISTANCE_SENSOR_VALUE < 3)   //While there are stones
+//                {
+//                    // Move forward to stones
+//                    moveForward(UNKNOWNDISTANCE);
+//                    CurrentY += UNKNOWNDISTANCE;// TODO: 2019-12-11 figure out exact position
+//
+//                }
+//
+//                //First SkyStone
+////            while(vuforiaData.getTrackableName().equals("Stone Target") && (vuforiaData.getThirdAngle() == 0))
+////            {
+////                moveRight(UNKNOWNDISTANCE);
+////                // TODO: 2019-12-11 figure out exact position
+////            }
+////            VuforiaTrackable SkyStone1 = targetsSkyStone.get(13);
+////            SkyStone1.setName("SkyStone1");
+////            SkyStone1.setLocation(OpenGLMatrix
+////                    .translation(CurrentX, CurrentY, stoneZ) // TODO: 2019-12-11 figure out exact position comparing with the other vuforia objects
+////                    .multiplied(Orientation.getRotationMatrix(EXTRINSIC, XYZ, DEGREES, 90, 0, -90)));//this is good
+//
+//                //Second SkyStone
+//                while (vuforiaData.getTrackableName().equals("Stone Target") && vuforiaData.getThirdAngle() == 0) {
+//                    moveRight(UNKNOWNDISTANCE);
+//                    // TODO: 2019-12-11 figure out exact position
+//                }
+//            /*
+//            VuforiaTrackable SkyStone2 = targetsSkyStone.get(13);
+//            SkyStone2.setName("SkyStone2");
+//            SkyStone2.setLocation(OpenGLMatrix
 //                    .translation(CurrentX, CurrentY, stoneZ) // TODO: 2019-12-11 figure out exact position comparing with the other vuforia objects
 //                    .multiplied(Orientation.getRotationMatrix(EXTRINSIC, XYZ, DEGREES, 90, 0, -90)));//this is good
-
-                //Second SkyStone
-                while (vuforiaData.getTrackableName().equals("Stone Target") && vuforiaData.getThirdAngle() == 0) {
-                    moveRight(UNKNOWNDISTANCE);
-                    // TODO: 2019-12-11 figure out exact position
-                }
-            /*
-            VuforiaTrackable SkyStone2 = targetsSkyStone.get(13);
-            SkyStone2.setName("SkyStone2");
-            SkyStone2.setLocation(OpenGLMatrix
-                    .translation(CurrentX, CurrentY, stoneZ) // TODO: 2019-12-11 figure out exact position comparing with the other vuforia objects
-                    .multiplied(Orientation.getRotationMatrix(EXTRINSIC, XYZ, DEGREES, 90, 0, -90)));//this is good
-
-             */
-                // TODO: 2019-12-11 No need to save 2nd, since we'll grab it right away
-
-                grabStone();
-                //go to Foundation, whereever
-                releaseStone();
-                //go back to first SkyStone
-
-                grabStone();    //first Stone grabbed
-                //go to Foundation, whereever
-                releaseStone();
-                //go back to first SkyStone
-
-
-            }
-            //then, park
-            //find placement on field
-            //find directions to midfield line
-            // move there
-
-            //stopRobot();
-
-
-
-        }
+//
+//             */
+//                // TODO: 2019-12-11 No need to save 2nd, since we'll grab it right away
+//
+//                grabStone();
+//                //go to Foundation, whereever
+//                releaseStone();
+//                //go back to first SkyStone
+//
+//                grabStone();    //first Stone grabbed
+//                //go to Foundation, whereever
+//                releaseStone();
+//                //go back to first SkyStone
+//
+//
+//            }
+//            //then, park
+//            //find placement on field
+//            //find directions to midfield line
+//            // move there
+//
+//            stopRobot();
+//
+//
+//
+         }
+        STOP_VUFORIA_THREAD=true;
+        requestOpModeStop();
 
 
     }

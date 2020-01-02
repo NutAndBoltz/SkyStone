@@ -281,7 +281,7 @@ public class Vuforia_Thread extends VuforiaAuto implements Runnable {
              // Tap the preview window to receive a fresh image.
 
              targetsSkyStone.activate();
-             while(!isStopRequested()) {
+
 
 
                  // check all the trackable targets to see which one (if any) is visible.
@@ -326,8 +326,16 @@ public class Vuforia_Thread extends VuforiaAuto implements Runnable {
 
                  }
                  //telemetry.update();
+        if(super.STOP_VUFORIA_THREAD)
+        {
 
-             }
+            targetsSkyStone.deactivate();
+            Log.i("End protocol","targetsSkyStone.deactivate()");
+            requestOpModeStop();
+            Log.i("End protocol","requestOpModeStop()");
+        }
+
+
              targetsSkyStone.deactivate();
 
 
@@ -345,8 +353,10 @@ public class Vuforia_Thread extends VuforiaAuto implements Runnable {
     public void run()
     {
 
-            Log.i("Vuforia_Thread","run()");
-            Visualization();
+        Log.i("Vuforia_Thread","run()");
+
+        Visualization();
+
 
 
 

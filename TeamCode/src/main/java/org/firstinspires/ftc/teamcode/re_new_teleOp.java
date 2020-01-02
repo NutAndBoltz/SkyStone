@@ -39,10 +39,14 @@ public class re_new_teleOp extends robotMovements {
         super.runOpMode();
         setMode(TELEOP);
 
+G1rightStickY=0;
+G1leftStickY=0;
+G1rightStickX=0;
+G1leftStickY=0;
         while(opModeIsActive())
         {
-            G1leftStickX =-gamepad1.left_stick_x;
-            G1rightStickX =-gamepad1.right_stick_x;
+            G1leftStickX = gamepad1.left_stick_x;
+            G1rightStickX = gamepad1.right_stick_x;
             G1rightStickY = -gamepad1.right_stick_y;
             G1leftStickY = -gamepad1.left_stick_y;
             float dpadThreshold = 0.2f;
@@ -66,29 +70,41 @@ public class re_new_teleOp extends robotMovements {
                 moveForward();
 
             }
-            if(G1leftStickY<0.3)
+            else if(G1leftStickY<-0.3)
             {
                 moveBackward();
             }
-            if(G1leftStickX<-0.3)
+            else if(G1leftStickX<-0.3)
             {
-                moveLeft(0);
+                moveLeft();
             }
-            if(G1leftStickX>0.3)
+            else if(G1leftStickX>0.3)
             {
-                moveRight(0);
+                moveRight();
             }
-            if(G1rightStickX>0.3)
+            else if(G1rightStickX>0.3)
             {
-                turnright(G1rightStickX);
+                turnright(Math.abs(G1rightStickX));
             }
-            if(G1rightStickX<-0.3)
+            else if(G1rightStickX<-0.3)
             {
-                turnleft(G1rightStickX);
+                turnleft(Math.abs(G1rightStickX));
+            }
+            else
+            {
+                stopRobot();
             }
 
+
+
+
             telemetry.addData("Status", "Running");
+            telemetry.addLine();
+            telemetry.addLine("G1leftStick X : "+G1leftStickX+"\t"+"G1rightStick X : "+G1rightStickX);
+            telemetry.addLine();
+            telemetry.addLine("G1leftStick Y : "+G1leftStickY+"\t"+"G1rightStick Y : "+G1rightStickY);
             telemetry.update();
+
         }
 
 
