@@ -15,7 +15,11 @@ public class robotInit  implements robotVariable
     public DcMotor motorFR;
     public DcMotor motorBL;
     public DcMotor motorBR;
+//    public DcMotor motorArm;
     public Servo foundationClaw;
+//    public Servo servoOrange;
+//    public Servo servo2;
+//    public Servo servoArm;
 
     public ModernRoboticsI2cGyro   gyro    = null;
 
@@ -35,8 +39,6 @@ public class robotInit  implements robotVariable
         // Save reference to Hardware map
         hardwareMap = ahwMap;
 
-
-
         //gyroSensor define and initialization
 
         //gyro = (ModernRoboticsI2cGyro)hardwareMap.gyroSensor.get("gyro");
@@ -47,11 +49,10 @@ public class robotInit  implements robotVariable
         motorFR = hardwareMap.get(DcMotor.class, "motor_fr");
         motorBL = hardwareMap.get(DcMotor.class, "motor_bl");
         motorBR = hardwareMap.get(DcMotor.class, "motor_br");
-
-        motorFL.setDirection(DcMotor.Direction.REVERSE);        motorFR.setDirection(DcMotor.Direction.FORWARD);
-        motorBL.setDirection(DcMotor.Direction.REVERSE);        motorBR.setDirection(DcMotor.Direction.FORWARD);
-
-
+        motorFL.setDirection(DcMotor.Direction.REVERSE);
+        motorBL.setDirection(DcMotor.Direction.REVERSE);
+        motorFR.setDirection(DcMotor.Direction.FORWARD);
+        motorBR.setDirection(DcMotor.Direction.FORWARD);
 
         // Set all motors to zero power
         motorBL.setPower(0);
@@ -70,13 +71,12 @@ public class robotInit  implements robotVariable
 
         // Define and initialize ALL installed servos.
         foundationClaw = hardwareMap.get(Servo.class, "foundationClaw");
+//        servoOrange = hardwareMap.get(Servo.class, "servoOrange");
+//        servo2 = hardwareMap.get(Servo.class, "servo2");
+//        servoArm = hardwareMap.get(Servo.class, "servoArm");
         foundationClaw.setPosition(MID_SERVO);
-
-
-
-
-
-
+        //init servoArm so it doesn't drag on ground
+//        servoArm.setPosition(0.9);
 
     }
 }
