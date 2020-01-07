@@ -47,7 +47,6 @@ import static org.firstinspires.ftc.robotcore.external.navigation.AngleUnit.DEGR
 import static org.firstinspires.ftc.robotcore.external.navigation.AxesOrder.XYZ;
 import static org.firstinspires.ftc.robotcore.external.navigation.AxesOrder.YZX;
 import static org.firstinspires.ftc.robotcore.external.navigation.AxesReference.EXTRINSIC;
-import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer.CameraDirection.BACK;
 
 /**
  * This 2019-2020 OpMode illustrates the basics of using the Vuforia localizer to determine
@@ -244,16 +243,22 @@ public class Vuforia_Thread extends VuforiaAuto implements Runnable {
              // The two examples below assume that the camera is facing forward out the front of the robot.
 
              // We need to rotate the camera around it's long axis to bring the correct camera forward.
-             if (CAMERA_CHOICE == BACK) {
-                 phoneYRotate = -90;
-             } else {
-                 phoneYRotate = 90;
-             }
+//             if (CAMERA_CHOICE == BACK) {
+//                 phoneYRotate = -90;
+//             } else {
+//                 phoneYRotate = 90;
+//             }
 
              // Rotate the phone vertical about the X axis if it's in portrait mode
-             if (PHONE_IS_PORTRAIT) {
-                 phoneXRotate = 90;
-             }
+//             if (PHONE_IS_PORTRAIT) {
+//                 phoneXRotate = 90;
+//             }
+
+            /**
+             * our phone is facing FRONT in Landscape Mode(horizontal), phone facing backside of robot
+             */
+            phoneYRotate=180;
+
 
              // Next, translate the camera lens to where it is on the robot.
              // In this example, it is centered (left to right), but forward of the middle of the robot, and above ground level.
