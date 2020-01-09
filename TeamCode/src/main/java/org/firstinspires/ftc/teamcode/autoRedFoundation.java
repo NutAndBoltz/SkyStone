@@ -25,19 +25,19 @@ public class autoRedFoundation extends robotMovements{
         robot.foundationClaw.setPosition(0);
 
         //Move forward to a little bit before the edge of the foundation
-        moveForward(32);
+        moveBackward(34);
 
         //Strafe right
-        moveRight(16);
+        moveLeft(20);
 
-        //Move servo arm down to latch onto foundation squares
+        //Move servo arm down to latch onto foundation squares,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,llllllllol okkkjk-
         robot.foundationClaw.setPosition(0.6);
 
         //delay
         stopRobot(2);
 
         //Move backward into the depot (leave enough space for robot)
-        moveBackward(36);
+        moveForward(36);
 
         //delay
         stopRobot(1);
