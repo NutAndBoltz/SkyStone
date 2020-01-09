@@ -158,9 +158,9 @@ public class VuforiaAuto extends robotMovements {
 
         waitForStart();
         runtime.reset();
-        while(!isStopRequested()) {
+        if(!isStopRequested()) {
             moveFoundation();
-            while(robot.runtime.seconds()<27)
+            while(robot.runtime.seconds()<27&&!isStopRequested())
             {
 
             }
