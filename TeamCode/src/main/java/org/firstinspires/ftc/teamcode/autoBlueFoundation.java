@@ -32,6 +32,7 @@ public class autoBlueFoundation extends robotMovements{
         robot.foundationClaw.setPosition(0.6);
 
         //delay
+
         stopRobot(2);
 
         //Move backward into the depot (leave enough space for robot)
@@ -47,7 +48,7 @@ public class autoBlueFoundation extends robotMovements{
         stopRobot(1);
 
         //Strafe Right to park
-        moveLeft(58);
+        moveLeft(56);
 
         stopRobot();
     }

@@ -31,6 +31,7 @@ public class autoRedFoundation extends robotMovements{
         moveLeft(20);
 
         //Move servo arm down to latch onto foundation squares,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,llllllllol okkkjk-
+
         robot.foundationClaw.setPosition(0.6);
 
         //delay
@@ -49,7 +50,7 @@ public class autoRedFoundation extends robotMovements{
         stopRobot(1);
 
         //Strafe Left
-        moveRight(66);
+        moveRight(63);
 
         stopRobot();
 
