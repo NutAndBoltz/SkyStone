@@ -49,6 +49,27 @@ G1leftStickY=0;
             G1rightStickX = gamepad1.right_stick_x;
             G1rightStickY = -gamepad1.right_stick_y;
             G1leftStickY = -gamepad1.left_stick_y;
+            boolean G1DPad_down =gamepad1.dpad_down;
+            boolean G1DPad_up =gamepad1.dpad_up;
+            boolean G1DPad_left =gamepad1.dpad_left;
+            boolean G1DPad_right =gamepad1.dpad_right;
+            if(G1DPad_down)
+            {
+                moveBackward(.5f);
+            }
+            if(G1DPad_up)
+            {
+                moveForward(.5f);
+            }
+            if(G1DPad_left)
+            {
+
+                moveLeft(0.5f);
+            }
+            if(G1DPad_right)
+            {
+                moveRight(0.5f);
+            }
             float dpadThreshold = 0.2f;
             if(gamepad1.y)
             {

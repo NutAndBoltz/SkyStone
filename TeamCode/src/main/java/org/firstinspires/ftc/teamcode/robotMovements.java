@@ -121,6 +121,13 @@ public class robotMovements extends LinearOpMode implements robotVariable
         robot.motorBL.setPower(teleOP_FORWARD_SPEED);       robot.motorBR.setPower(teleOP_FORWARD_SPEED);
 
     }
+    public void moveForward(float speed)
+    {
+        robot.motorFL.setPower(speed);       robot.motorFR.setPower(speed);
+        robot.motorBL.setPower(speed);       robot.motorBR.setPower(speed);
+
+
+    }
 
     public void moveBackward(double inches)
     {
@@ -197,6 +204,14 @@ public class robotMovements extends LinearOpMode implements robotVariable
         robot.motorFL.setPower(-teleOP_FORWARD_SPEED);      robot.motorFR.setPower(-teleOP_FORWARD_SPEED);
 
         robot.motorBL.setPower(-teleOP_FORWARD_SPEED);      robot.motorBR.setPower(-teleOP_FORWARD_SPEED);
+
+    }
+    public void moveBackward(float speed)
+    {
+
+        robot.motorFL.setPower(-speed);      robot.motorFR.setPower(-speed);
+
+        robot.motorBL.setPower(-speed);      robot.motorBR.setPower(-speed);
 
     }
     void reportTick()
@@ -299,6 +314,13 @@ public class robotMovements extends LinearOpMode implements robotVariable
         robot.motorBL.setPower(-teleOP_FORWARD_SPEED);      robot.motorBR.setPower(teleOP_FORWARD_SPEED);
 
     }
+    public void moveRight(float speed)
+    {
+        robot.motorFL.setPower(speed);       robot.motorFR.setPower(-speed);
+
+        robot.motorBL.setPower(-speed);      robot.motorBR.setPower(speed);
+
+    }
     public void moveLeft(double inches)
     {
         String opMode=this.opMode;
@@ -372,6 +394,13 @@ public class robotMovements extends LinearOpMode implements robotVariable
         robot.motorFL.setPower(-teleOP_FORWARD_SPEED);      robot.motorFR.setPower(teleOP_FORWARD_SPEED);
 
         robot.motorBL.setPower(teleOP_FORWARD_SPEED);       robot.motorBR.setPower(-teleOP_FORWARD_SPEED);
+
+    }
+    public void moveLeft(float speed)
+    {
+        robot.motorFL.setPower(-speed);      robot.motorFR.setPower(speed);
+
+        robot.motorBL.setPower(speed);       robot.motorBR.setPower(-speed);
 
     }
     public void turnleft(double speed)
