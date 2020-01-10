@@ -321,6 +321,13 @@ public class robotMovements extends LinearOpMode implements robotVariable
         robot.motorBL.setPower(-speed);      robot.motorBR.setPower(speed);
 
     }
+    public void driftRight(float speed)
+    {
+        robot.motorFL.setPower(0);       robot.motorFR.setPower(0);
+
+        robot.motorBL.setPower(-speed);      robot.motorBR.setPower(speed);
+
+    }
     public void moveLeft(double inches)
     {
         String opMode=this.opMode;
@@ -399,6 +406,13 @@ public class robotMovements extends LinearOpMode implements robotVariable
     public void moveLeft(float speed)
     {
         robot.motorFL.setPower(-speed);      robot.motorFR.setPower(speed);
+
+        robot.motorBL.setPower(speed);       robot.motorBR.setPower(-speed);
+
+    }
+    public void driftLeft(float speed)
+    {
+        robot.motorFL.setPower(0);      robot.motorFR.setPower(0);
 
         robot.motorBL.setPower(speed);       robot.motorBR.setPower(-speed);
 

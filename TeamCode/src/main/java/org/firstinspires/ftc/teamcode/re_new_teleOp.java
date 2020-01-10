@@ -64,11 +64,11 @@ G1leftStickY=0;
             if(G1DPad_left)
             {
 
-                moveLeft(0.5f);
+                driftLeft(1f);
             }
             if(G1DPad_right)
             {
-                moveRight(0.5f);
+                driftRight(1f);
             }
             float dpadThreshold = 0.2f;
             if(gamepad1.y)
