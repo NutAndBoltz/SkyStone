@@ -2,6 +2,9 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+import org.firstinspires.ftc.teamcode.robotMovements;
+
 @Disabled
 @TeleOp(name = "Re_CurrentV_GM")
 public class Re_CurrentV_GM extends robotMovements {

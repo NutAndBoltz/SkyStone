@@ -1,8 +1,9 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+
 @Autonomous(name = "re_autoCode",group = "auto")
-public class re_autoCode extends robotMovements  {
+public class re_autoCode extends robotMovements {
 
     @Override
     public void runOpMode() throws InterruptedException {

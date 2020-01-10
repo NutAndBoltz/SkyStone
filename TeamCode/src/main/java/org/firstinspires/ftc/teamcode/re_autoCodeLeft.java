@@ -49,6 +49,8 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
+import org.firstinspires.ftc.teamcode.robotMovements;
+
 @Autonomous(name="re_autoCodeLeft", group="auto")
 @Disabled
 
