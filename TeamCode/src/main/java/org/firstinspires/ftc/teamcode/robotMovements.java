@@ -121,7 +121,7 @@ public class robotMovements extends LinearOpMode implements robotVariable
         robot.motorBL.setPower(teleOP_FORWARD_SPEED);       robot.motorBR.setPower(teleOP_FORWARD_SPEED);
 
     }
-    public void moveForward(float speed)
+    public void moveForward(float speed, String mode)
     {
         robot.motorFL.setPower(speed);       robot.motorFR.setPower(speed);
         robot.motorBL.setPower(speed);       robot.motorBR.setPower(speed);
@@ -206,7 +206,7 @@ public class robotMovements extends LinearOpMode implements robotVariable
         robot.motorBL.setPower(-teleOP_FORWARD_SPEED);      robot.motorBR.setPower(-teleOP_FORWARD_SPEED);
 
     }
-    public void moveBackward(float speed)
+    public void moveBackward(float speed, String mode)
     {
 
         robot.motorFL.setPower(-speed);      robot.motorFR.setPower(-speed);
@@ -314,14 +314,14 @@ public class robotMovements extends LinearOpMode implements robotVariable
         robot.motorBL.setPower(-teleOP_FORWARD_SPEED);      robot.motorBR.setPower(teleOP_FORWARD_SPEED);
 
     }
-    public void moveRight(float speed)
+    public void moveRight(float speed, String mode)
     {
         robot.motorFL.setPower(speed);       robot.motorFR.setPower(-speed);
 
         robot.motorBL.setPower(-speed);      robot.motorBR.setPower(speed);
 
     }
-    public void driftRight(float speed)
+    public void driftRight(float speed, String mode)
     {
         robot.motorFL.setPower(0);       robot.motorFR.setPower(0);
 
@@ -403,14 +403,14 @@ public class robotMovements extends LinearOpMode implements robotVariable
         robot.motorBL.setPower(teleOP_FORWARD_SPEED);       robot.motorBR.setPower(-teleOP_FORWARD_SPEED);
 
     }
-    public void moveLeft(float speed)
+    public void moveLeft(float speed, String mode)
     {
         robot.motorFL.setPower(-speed);      robot.motorFR.setPower(speed);
 
         robot.motorBL.setPower(speed);       robot.motorBR.setPower(-speed);
 
     }
-    public void driftLeft(float speed)
+    public void driftLeft(float speed, String mode)
     {
         robot.motorFL.setPower(0);      robot.motorFR.setPower(0);
 

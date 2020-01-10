@@ -52,6 +52,7 @@ public class autoRedFoundation extends robotMovements{
         moveRight(66);
 
         stopRobot();
+
     }
 }
 

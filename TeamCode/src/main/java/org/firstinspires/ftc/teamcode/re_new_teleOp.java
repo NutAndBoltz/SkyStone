@@ -55,22 +55,21 @@ G1leftStickY=0;
             boolean G1DPad_right =gamepad1.dpad_right;
             if(G1DPad_down)
             {
-                moveBackward(.5f);
+                moveBackward((float) .5,"");
             }
             if(G1DPad_up)
             {
-                moveForward(.5f);
+                moveForward((float) .5,"");
             }
             if(G1DPad_left)
             {
 
-                driftLeft(1f);
+                driftLeft(1,"");
             }
             if(G1DPad_right)
             {
-                driftRight(1f);
+                driftRight(1, "");
             }
-            float dpadThreshold = 0.2f;
             if(gamepad1.y)
             {
                 //move claw down
