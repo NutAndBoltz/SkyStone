@@ -97,33 +97,37 @@ public class VuforiaAuto extends robotMovements {
 
     public void moveFoundation()
     {
-        //move foundation
-        //Move servo arm up
-        robot.foundationClaw.setPosition(0);
-        //Move forward to a little bit before the edge of the foundation
-        moveBackward(32);
-        //VuforiaTrackableDefaultListener vuforiaTrackableDefaultListener =new VuforiaTrackableDefaultListener();
+        while(robot.runtime.seconds()<27&&!isStopRequested()) {
 
 
-        vuforiaData.getCurrentposition();
+            //move foundation
+            //Move servo arm up
+            robot.foundationClaw.setPosition(0);
+            //Move forward to a little bit before the edge of the foundation
+            moveBackward(32);
+            //VuforiaTrackableDefaultListener vuforiaTrackableDefaultListener =new VuforiaTrackableDefaultListener();
 
-        //Strafe left
-        moveLeft(16);
 
-        CurrentX+=16; // TODO: 2019-12-11 figure out exact position
+            vuforiaData.getCurrentposition();
 
-        //Move servo arm down to latch onto foundation squares
-        robot.foundationClaw.setPosition(0.6);
-        //delay
-        stopRobot(2);
-        //Move backward into the depot (leave enough space for robot)
-        moveForward(36);
-        CurrentY+=36;// TODO: 2019-12-11 figure out exact position
-        //delay
-        stopRobot(1);
-        //Move servo arm up
-        robot.foundationClaw.setPosition(0);
+            //Strafe left
+            moveLeft(16);
 
+            CurrentX += 16; // TODO: 2019-12-11 figure out exact position
+
+            //Move servo arm down to latch onto foundation squares
+            robot.foundationClaw.setPosition(0.6);
+            //delay
+            stopRobot(2);
+            //Move backward into the depot (leave enough space for robot)
+            moveForward(36);
+            CurrentY += 36;// TODO: 2019-12-11 figure out exact position
+            //delay
+            stopRobot(1);
+            //Move servo arm up
+            robot.foundationClaw.setPosition(0);
+
+        }
     }
 
 
@@ -159,9 +163,9 @@ public class VuforiaAuto extends robotMovements {
         waitForStart();
         runtime.reset();
         if(!isStopRequested()) {
-            moveFoundation();
             while(robot.runtime.seconds()<27&&!isStopRequested())
             {
+                moveFoundation();
 
             }
 
