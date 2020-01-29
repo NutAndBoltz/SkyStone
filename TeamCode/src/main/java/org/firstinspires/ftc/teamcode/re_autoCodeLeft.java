@@ -49,27 +49,23 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
-import org.firstinspires.ftc.teamcode.robotMovements;
-
 @Autonomous(name="re_autoCodeLeft", group="auto")
 @Disabled
-
 public class re_autoCodeLeft extends robotMovements {
 
     @Override
     public void runOpMode() throws InterruptedException {
         super.runOpMode();
         setMode(AUTO);
-
-        resetEncoder();
-        startEncoderMode();
+        robot.runtime.reset();
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Status", "Ready to run");    //
         telemetry.update();
 
-        //drive forward to crater
+
+        //park over mid-line
         moveForward(4);
-        moveLeft(16);
+        moveLeft(30);
     }
 }

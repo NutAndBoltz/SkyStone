@@ -1,10 +1,9 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
-@Autonomous(name="autoCodeLeft", group="auto")
-@Disabled
+@Autonomous(name="Park:blueAlliance", group="auto")
+
 
 public class autoCodeLeft extends robotMovements {
 
@@ -12,21 +11,16 @@ public class autoCodeLeft extends robotMovements {
     public void runOpMode() throws InterruptedException {
         super.runOpMode();
         setMode(AUTO);
+
         // Send telemetry message to signify robot waiting;
-        telemetry.addData("Status", "Resetting Encoders");
+        telemetry.addData("Status", "Ready to run");    //
         telemetry.update();
 
         resetEncoder();
         startEncoderMode();
 
-        while (opModeIsActive())
-        {
-            stopRobot(1);
-
-            //Strafe left
-            moveLeft(15);
-
-
-        }
+        //park over mid-line
+        moveBackward(4);
+        moveLeft(33);
     }
 }

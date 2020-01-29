@@ -15,10 +15,11 @@ public class robotInit  implements robotVariable
     public DcMotor motorFR;
     public DcMotor motorBL;
     public DcMotor motorBR;
-//    public DcMotor motorArm;
+//    public DcMotor motorArm1;
+//    public DcMotor motorArm2;
     public Servo foundationClaw;
-//    public Servo servoOrange;
-//    public Servo servo2;
+    public Servo servoOrange;
+    public Servo servo2;
 //    public Servo servoArm;
 
     public ModernRoboticsI2cGyro   gyro    = null;
@@ -54,11 +55,20 @@ public class robotInit  implements robotVariable
         motorFR.setDirection(DcMotor.Direction.FORWARD);
         motorBR.setDirection(DcMotor.Direction.FORWARD);
 
+
+//        motorArm1 = hardwareMap.get(DcMotor.class, "motorArm1");
+//        motorArm1.setDirection(DcMotor.Direction.FORWARD);
+//
+//        motorArm2 = hardwareMap.get(DcMotor.class, "motorArm2");
+//        motorArm2.setDirection(DcMotor.Direction.FORWARD);
+
         // Set all motors to zero power
         motorBL.setPower(0);
         motorBR.setPower(0);
         motorFR.setPower(0);
         motorFL.setPower(0);
+//        motorArm1.setPower(0);
+//        motorArm2.setPower(0);
 
 
         // Set all motors to run without encoders.
@@ -67,17 +77,19 @@ public class robotInit  implements robotVariable
         motorBL.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         motorBR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         motorFR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+//        motorArm1.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+//        motorArm2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
 
         // Define and initialize ALL installed servos.
         foundationClaw = hardwareMap.get(Servo.class, "foundationClaw");
-//        servoOrange = hardwareMap.get(Servo.class, "servoOrange");
-//        servo2 = hardwareMap.get(Servo.class, "servo2");
-//        servoArm = hardwareMap.get(Servo.class, "servoArm");
+        servoOrange = hardwareMap.get(Servo.class, "servoOrange");
+        servo2 = hardwareMap.get(Servo.class, "servo2");
         foundationClaw.setPosition(MID_SERVO);
-        //init servoArm so it doesn't drag on ground
-//        servoArm.setPosition(0.9);
 
+        //init servoArm so it doesn't drag on ground
+        servo2.setPosition(0.8); //0.3
+        servoOrange.setPosition(0.8);
     }
 }
 

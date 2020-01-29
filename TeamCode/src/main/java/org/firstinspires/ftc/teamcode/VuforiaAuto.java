@@ -162,7 +162,6 @@ public class VuforiaAuto extends robotMovements {
 
         waitForStart();
         runtime.reset();
-        if(!isStopRequested()) {
             while(robot.runtime.seconds()<27&&!isStopRequested())
             {
                 moveFoundation();
@@ -177,11 +176,7 @@ public class VuforiaAuto extends robotMovements {
              * this will scan for images in any time and update vuforiaData at robotMovement.class in realtime
              */
 
-
-
-
-
-         }
+            
         STOP_VUFORIA_THREAD=true;
         requestOpModeStop();
 

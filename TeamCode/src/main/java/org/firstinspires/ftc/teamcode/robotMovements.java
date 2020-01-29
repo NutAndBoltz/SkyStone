@@ -372,7 +372,7 @@ public class robotMovements extends LinearOpMode implements robotVariable
 
                     // Display it for the driver.
                     telemetry.addData("motorFL", "%7d", robot.motorFL.getCurrentPosition());
-                    telemetry.addData("motorFR", "%7d", robot.motorFR.getCurrentPosition() );
+                    telemetry.addData("motorFR", "%7d", robot.motorFR.getCurrentPosition());
                     telemetry.addData("motorBL", "%7d", robot.motorBL.getCurrentPosition());
                     telemetry.addData("motorBR", "%7d", robot.motorBR.getCurrentPosition());
                     telemetry.update();
@@ -449,19 +449,24 @@ public class robotMovements extends LinearOpMode implements robotVariable
     }
     public void grabStone()
     {
-        // TODO: 2019-12-11 add servo, and make method
+        robot.servo2.setPosition(0); //0.3
+        robot.servoOrange.setPosition(0.8);
     }
     public void releaseStone()
     {
-        // TODO: 2019-12-11 add servo, and make method
+        robot.servoOrange.setPosition(0);
+        robot.servo2.setPosition(1);
     }
     public void lifterUp()
     {
-        // TODO: 2019-12-11 add servo, and make method
+//        robot.motorArm1.setPower(teleOP_FORWARD_SPEED);
+//        robot.motorArm2.setPower(teleOP_FORWARD_SPEED);
+
     }
     public void lifterDown()
     {
-        // TODO: 2019-12-11 add servo, and make method
+//        robot.motorArm1.setPower(-teleOP_FORWARD_SPEED);
+//        robot.motorArm2.setPower(-teleOP_FORWARD_SPEED);
     }
 
 

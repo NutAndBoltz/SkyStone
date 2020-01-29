@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-@Autonomous(name="autoRedFoundation", group="auto")
+@Autonomous(name="fullRedFoundation", group="auto")
 
 public class autoRedFoundation extends robotMovements{
 
@@ -11,6 +11,7 @@ public class autoRedFoundation extends robotMovements{
        
         super.runOpMode();
         setMode(AUTO);
+
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Status", "Resetting Encoders");
         telemetry.update();
@@ -30,12 +31,11 @@ public class autoRedFoundation extends robotMovements{
         //Strafe right
         moveLeft(20);
 
-        //Move servo arm down to latch onto foundation squares,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,llllllllol okkkjk-
-
+        //Move servo arm down to latch onto foundation squares
         robot.foundationClaw.setPosition(0.6);
 
         //delay
-        stopRobot(2);
+        stopRobot(1);
 
         //Move backward into the depot (leave enough space for robot)
         moveForward(36);

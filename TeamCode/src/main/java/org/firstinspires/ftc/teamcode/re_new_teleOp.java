@@ -53,6 +53,7 @@ G1leftStickY=0;
             boolean G1DPad_up =gamepad1.dpad_up;
             boolean G1DPad_left =gamepad1.dpad_left;
             boolean G1DPad_right =gamepad1.dpad_right;
+            long setTime = System.currentTimeMillis();
             if(G1DPad_down)
             {
                 moveBackward((float) .5,"");
@@ -75,16 +76,36 @@ G1leftStickY=0;
                 //move claw down
                 robot.foundationClaw.setPosition(0);
             }
-            if(gamepad1.b)
-            {
-                //move claw 90 deg
-                robot.foundationClaw.setPosition(0.5);
-            }
             if(gamepad1.a)
             {
                 //move claw up
                 robot.foundationClaw.setPosition(1);
             }
+            if(gamepad1.x)
+            {
+                //release stone or extend
+                robot.servoOrange.setPosition(0);
+                robot.servo2.setPosition(0);
+            }
+            if(gamepad1.b)
+            {
+                //grab stone
+                robot.servo2.setPosition(0.75);
+                //wait
+                stopRobot(1);
+                robot.servoOrange.setPosition(0.5);
+            }
+            if(gamepad1.right_trigger > 0.3){
+//                lifterUp();
+//                robot.motorArm1.setPower(0.3);
+//                robot.motorArm2.setPower(0.3);
+            }
+            if(gamepad1.left_trigger > 0.3){
+//                lifterDown();
+//                robot.motorArm1.setPower(-teleOP_FORWARD_SPEED);
+//                robot.motorArm2.setPower(-teleOP_FORWARD_SPEED);
+            }
+
             if(G1leftStickY>0.3)
             {
                 moveForward();
